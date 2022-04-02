@@ -4,17 +4,21 @@ import Item from '../Item/Item';
 import '../../scss/App.scss';
 
 export default function Items(props) {
-  const { DB } = props;
+  const { items } = props;
   const { category } = useParams();
   console.log(category);
   return (
     <>
-      <div className="items">
-        <h1 className="items__title">Items</h1>
-        {DB.map((item) => {
-          return <Item key={item.id} details={item}></Item>;
-        })}
-      </div>
+      <ul className="items">
+        <h2 className="items__name">{category}</h2>
+        <div className="container">
+          {items
+            .filter((item) => item.category === category)
+            .map((item) => {
+              return <Item key={item.id} details={item}></Item>;
+            })}
+        </div>
+      </ul>
     </>
   );
 }

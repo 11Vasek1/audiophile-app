@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 import styles from './Navbar.module.scss';
 import clsx from 'clsx';
-import LogoSvg from '../../assets/shared/desktop/logo.svg';
-import CartSvg from '../../assets/shared/desktop/icon-cart.svg';
+import LogoSvg from '../../../assets/shared/desktop/logo.svg';
+import CartSvg from '../../../assets/shared/desktop/icon-cart.svg';
 
 export default function Navbar() {
   const [isActiveNav, setIsActiveNav] = useState(false);
@@ -42,17 +42,17 @@ export default function Navbar() {
           </NavLink>
         </li>
         <li className={styles.menu__item}>
-          <NavLink to="/products/headphones" className={classes}>
+          <NavLink to="/items/headphones" className={classes}>
             HEADPHONES
           </NavLink>
         </li>
         <li className={styles.menu__item}>
-          <NavLink to="/products/speakers" className={classes}>
+          <NavLink to="/items/speakers" className={classes}>
             SPEAKERS
           </NavLink>
         </li>
         <li className={styles.menu__item}>
-          <NavLink to="/products/earphones" className={classes}>
+          <NavLink to="/items/earphones" className={classes}>
             EARPHONES
           </NavLink>
         </li>

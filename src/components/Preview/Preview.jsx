@@ -2,8 +2,8 @@ import React from 'react';
 import Button from '../UI/Button';
 
 import styles from './Preview.module.scss';
-import SpeakersPng from '../../assets/home/desktop/image-speaker-zx9.png';
-import EarphonesImg from '../../assets/home/desktop/image-earphones-yx1.jpg';
+import SpeakersPng from '../../../assets/home/desktop/image-speaker-zx9.png';
+import EarphonesImg from '../../../assets/home/desktop/image-earphones-yx1.jpg';
 
 export default function Preview() {
   return (

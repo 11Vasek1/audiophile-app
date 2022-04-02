@@ -100,7 +100,7 @@ body {
   letter-spacing: 2px;
   text-transform: uppercase;
 
-  &--orange{
+  &--orange {
     color: $accent;
   }
 }
@@ -270,42 +270,26 @@ body {
 }
 
 .items {
-  &__title {
+  &__name {
     font-weight: 700;
     font-size: 40px;
     line-height: 44px;
     text-align: center;
     letter-spacing: 1.42857px;
     text-transform: uppercase;
-    color: $title;
-  }
-}
-
-.item {
-  display: flex;
-  justify-content: space-between;
-  &__box {
-    display: flex;
-    flex-direction: column;
-  }
-  &__subtitle {
-    color: #d87d4a;
-  }
-  &__title {
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 44px;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
+    color: #fff;
+    background-color: #191919;
+    padding: 100px 0;
+    margin-bottom: 150px;
   }
 }
 
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 3px;
   background-color: #f6ffee;
 }
 ::-webkit-scrollbar-thumb {
-  border-radius: 10px;
+  border-radius: 2px;
   background-color: #191919;
 }
 
