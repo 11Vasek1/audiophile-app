@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home/Home';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import Products from './components/Items/Items';
 import Cart from './components/Cart/Cart';
 
 import DB from './data.json';
@@ -10,12 +11,17 @@ import DB from './data.json';
 import './scss/App.scss';
 
 function App() {
+  console.log(DB);
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
+            <Route
+              path="products/:category"
+              element={<Products products={DB} />}
+            />
             <Route path="cart" element={<Cart />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>

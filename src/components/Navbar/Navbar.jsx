@@ -42,17 +42,17 @@ export default function Navbar() {
           </NavLink>
         </li>
         <li className={styles.menu__item}>
-          <NavLink to="/headphones" className={classes}>
+          <NavLink to="/products/headphones" className={classes}>
             HEADPHONES
           </NavLink>
         </li>
         <li className={styles.menu__item}>
-          <NavLink to="/speakers" className={classes}>
+          <NavLink to="/products/speakers" className={classes}>
             SPEAKERS
           </NavLink>
         </li>
         <li className={styles.menu__item}>
-          <NavLink to="/earphones" className={classes}>
+          <NavLink to="/products/earphones" className={classes}>
             EARPHONES
           </NavLink>
         </li>
