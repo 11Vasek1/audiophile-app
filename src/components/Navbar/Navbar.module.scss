@@ -1,0 +1,40 @@
+@import '../../scss/vars';
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 35px 0;
+  border-bottom: 1px solid #ffffff33;
+  background-color: $bg_black;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__item {
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 25px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  &__item + .menu__item {
+    margin-left: 35px;
+  }
+  &__link {
+    color: #fff;
+    transition: all 0.3s;
+    &:hover {
+      color: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+.active {
+  color: #d87d4a;
+  &:hover {
+    color: #d87d4a;
+  }
+}
