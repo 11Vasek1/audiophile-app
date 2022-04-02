@@ -1,0 +1,17 @@
+.product-features{
+    display: flex;
+    justify-content: space-between;
+    
+    &__features{
+        width: 635px;
+    }
+}
+
+product-features__features
+
+.product-feature{
+    display: flex;
+    &__number{
+        margin-right: 21px;
+    }
+}

@@ -1,0 +1,24 @@
+.card-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    &--reverse{
+        flex-direction:row-reverse;
+    }
+}
+
+.card-info-image{
+    width: 540px;
+    height: 560px;
+}
+
+.card-info-content{
+    width: 445px;
+
+    &__title{
+        margin-top: 16px;
+        margin-bottom: 32px;
+    }
+}
