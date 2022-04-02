@@ -12,14 +12,7 @@ export default function Layout() {
           <Navbar />
         </div>
         <div className="main">
-          <NewProduct
-            model="XX99 Mark II Headphones"
-            description="Experience natural, lifelike audio and exceptional build quality made
-          for the passionate music enthusiast."
-          />
-          <div className="container">
-            <Outlet />
-          </div>
+          <Outlet />
           <div className="footer">
             <Footer />
           </div>

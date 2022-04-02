@@ -1,11 +1,12 @@
 .card-info{
-    &__image{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
 
+    &--reverse{
+        flex-direction:row-reverse;
     }
-    &__content{
-
-    }
-
 }
 
 .card-info-image{
@@ -14,8 +15,10 @@
 }
 
 .card-info-content{
+    width: 445px;
 
+    &__title{
+        margin-top: 16px;
+        margin-bottom: 32px;
+    }
 }
-
-// ./assets/product-yx1-earphones/desktop/image-product.jpg"
-// ./src/assets/product-yx1-earphones/desktop/image-product.jpg

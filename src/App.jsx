@@ -97,7 +97,7 @@ const data = {
 }
 
 import './scss/App.scss';
-import Product from './components/ProductPage/Product.jsx';
+import Product from './components/Product/Product.jsx';
 
 function App() {
   return (

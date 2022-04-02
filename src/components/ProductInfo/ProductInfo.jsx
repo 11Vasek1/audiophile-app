@@ -3,16 +3,18 @@ import './ProductInfo.scss';
 import { formatImgSrc, getDevice } from '../../utils';
 
 
-function ProductInfo({name, image, isNew, price, description, content}){
+function ProductInfo({name, image, isNew, price, description, content, isReverse}){
     const imageSrc = formatImgSrc( image[ getDevice() ] )
+
+    const className = 'card-info' +  (isReverse ? " card-info--reverse" : "")
+    
     return (
-        <div className='card-info'>
+        <div className={className}>
             <img src={ imageSrc } className="card-info-image" />
             <div className="card-info-content">
-                {isNew && <p className='subtitle'>NEW PRODUCT</p>}
-                <h2 className="h2">{name}</h2>
+                {isNew && <p className='subtitle subtitle--orange'>NEW PRODUCT</p>}
+                <h2 className="h2 card-info-content__title">{name}</h2>
                 <p>{description}</p>
-                <h6 className="h6">$ {price}</h6>
                 {content}
             </div>
         </div>
