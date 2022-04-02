@@ -1,10 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar/Navbar';
-import Button from './components/Button';
-import Input from './components/Input';
-import Test from './components/Test';
-import Home from './components/Home/Home';
+import Layout from './components/Layout';
+import Home from './pages/Home/Home';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import Cart from './components/Cart/Cart';
+
+import DB from './data.json';
 
 const data = {
 	"id": 1,
@@ -102,16 +103,14 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <div className="container">
-          <Navbar />
-        </div>
-        <div className='content'>
-
-          <Routes>
-            <Route path="/" element={<Home />}/>
-            <Route path="/product" element={<Product product={data}/>}/>
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="cart" element={<Cart />} />
+			<Route path="/product" element={<Product product={data}/>}/>
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
       </BrowserRouter>
     </>
   );

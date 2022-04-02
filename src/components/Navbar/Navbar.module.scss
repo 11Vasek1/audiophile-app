@@ -3,9 +3,19 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  padding: 35px 0;
+  padding: 35px 15px;
   border-bottom: 1px solid #ffffff33;
-  background-color: $bg_black;
+  background-color: #191919;
+  @media (max-width: 768px) {
+    position: relative;
+  }
+  &__brand {
+    @media (max-width: 768px) {
+      position: absolute;
+      top: 33px;
+      left: 68px;
+    }
+  }
 }
 
 .menu {
@@ -13,6 +23,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 768px) {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    display: block;
+    text-align: center;
+    background-color: #191919;
+    transform: translateY(-200%);
+    transition: all 0.5s;
+  }
   &__item {
     font-weight: 700;
     font-size: 13px;
@@ -22,6 +43,9 @@
   }
   &__item + .menu__item {
     margin-left: 35px;
+    @media (max-width: 768px) {
+      margin: 0;
+    }
   }
   &__link {
     color: #fff;
@@ -29,6 +53,17 @@
     &:hover {
       color: rgba(255, 255, 255, 0.3);
     }
+    @media (max-width: 768px) {
+      display: block;
+      padding: 15px 0;
+      color: #fff;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar.navbarActive .menu {
+    transform: translateY(0);
   }
 }
 
@@ -36,5 +71,26 @@
   color: #d87d4a;
   &:hover {
     color: #d87d4a;
+  }
+}
+
+.menu__btn {
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover {
+      svg {
+        g {
+          fill: rgba(243, 234, 234, 0.688);
+        }
+      }
+    }
   }
 }

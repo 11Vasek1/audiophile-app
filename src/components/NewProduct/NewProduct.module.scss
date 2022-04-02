@@ -1,0 +1,46 @@
+.newProduct {
+  background-image: url('../../assets/home/desktop/image-hero.jpg');
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  padding: 130px 15px 158px 15px;
+  background-color: #191919;
+  @media (max-width: 768px) {
+    background-image: url('../../assets/home/tablet/image-header.jpg');
+    margin-top: -85px;
+    padding-top: 225px;
+  }
+  @media (max-width: 445px) {
+    background-image: url('../../assets/home/mobile/image-header.jpg');
+    background-size: contain;
+  }
+  &__about {
+    max-width: 400px;
+    @media (max-width: 768px) {
+      max-width: 389px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    @media (max-width: 375px) {
+      max-width: 328px;
+    }
+  }
+  &__about_describe {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 25px;
+    color: #ffffffbf;
+    margin-bottom: 40px;
+  }
+}
+
+.subtitle {
+  margin-bottom: 25px;
+}
+
+.title {
+  margin-bottom: 25px;
+  @media (max-width: 375px) {
+    max-width: 328px;
+  }
+}
