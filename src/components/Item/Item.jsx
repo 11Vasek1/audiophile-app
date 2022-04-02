@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../UI/Button';
 import { formatImgSrc, getDevice } from '../../utils';
 
@@ -25,7 +26,9 @@ export default function Item(props) {
           )}
           <div className="item__title">{details.name}</div>
           <div className="item__description">{details.description}</div>
-          <Button className="button">See Product</Button>
+          <Link to={`/items/${details.category}/${details.id}`}>
+            <Button className="button">See Product</Button>
+          </Link>
         </div>
       </li>
     </>

@@ -112,8 +112,11 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="items/:category" element={<Items items={DB} />} />
+            <Route
+              path="items/:category/:id"
+              element={<Product product={data} />}
+            />
             <Route path="cart" element={<Cart />} />
-            <Route path="/product" element={<Product product={data} />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

@@ -11,15 +11,13 @@ function ProductInfo({
   content,
   isReverse,
 }) {
-  console.log(image);
-  const imageSrc = formatImgSrc(image[getDevice()]);
-  console.log(imageSrc);
+  //const imageSrc = formatImgSrc(image[getDevice()]);
 
   const className = 'card-info' + (isReverse ? ' card-info--reverse' : '');
 
   return (
     <div className={className}>
-      <img src={imageSrc} className="card-info-image" />
+      <img src={`../../${image.desktop}`} className="card-info-image" />
       <div className="card-info-content">
         {isNew && <p className="subtitle subtitle--orange">NEW PRODUCT</p>}
         <h2 className="h2 card-info-content__title">{name}</h2>
