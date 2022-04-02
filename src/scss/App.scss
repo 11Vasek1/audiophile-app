@@ -99,6 +99,10 @@ body {
   line-height: 25px;
   letter-spacing: 2px;
   text-transform: uppercase;
+
+  &--orange{
+    color: $accent;
+  }
 }
 
 .button_orange {
