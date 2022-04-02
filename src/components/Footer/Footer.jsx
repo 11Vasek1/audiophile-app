@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './Footer.module.scss';
-import LogoSvg from '../../assets/shared/desktop/logo.svg';
+import LogoSvg from '../../../assets/shared/desktop/logo.svg';
 
 export default function Footer() {
   return (

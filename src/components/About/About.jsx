@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './About.module.scss';
-import AboutImg from '../../assets/shared/desktop/image-best-gear.jpg';
-import AboutGpg from '../../assets/shared/tablet/image-best-gear.jpg';
+import AboutImg from '../../../assets/shared/desktop/image-best-gear.jpg';
+import AboutGpg from '../../../assets/shared/tablet/image-best-gear.jpg';
 
 export default function About() {
   return (

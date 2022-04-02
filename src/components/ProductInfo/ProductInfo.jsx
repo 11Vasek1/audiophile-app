@@ -4,7 +4,8 @@ import { formatImgSrc, getDevice } from '../../utils';
 
 
 function ProductInfo({name, image, isNew, price, description, content, isReverse}){
-    const imageSrc = formatImgSrc( image[ getDevice() ] )
+
+    const imageSrc = image[ getDevice() ]
 
     const className = 'card-info' +  (isReverse ? " card-info--reverse" : "")
     

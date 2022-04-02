@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 import styles from './Navbar.module.scss';
 import clsx from 'clsx';
-import LogoSvg from '../../assets/shared/desktop/logo.svg';
-import CartSvg from '../../assets/shared/desktop/icon-cart.svg';
+import LogoSvg from '../../../assets/shared/desktop/logo.svg';
+import CartSvg from '../../../assets/shared/desktop/icon-cart.svg';
 
 export default function Navbar() {
   const [isActiveNav, setIsActiveNav] = useState(false);

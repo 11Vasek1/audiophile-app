@@ -4,9 +4,9 @@ import Button from '../UI/Button';
 import clsx from 'clsx';
 import styles from './Categories.module.scss';
 
-import HeadphonesPng from '../../assets/shared/desktop/image-category-thumbnail-headphones.png';
-import SpeakersPng from '../../assets/shared/desktop/image-category-thumbnail-speakers.png';
-import EarphonesPng from '../../assets/shared/desktop/image-category-thumbnail-earphones.png';
+import HeadphonesPng from '../../../assets/shared/desktop/image-category-thumbnail-headphones.png';
+import SpeakersPng from '../../../assets/shared/desktop/image-category-thumbnail-speakers.png';
+import EarphonesPng from '../../../assets/shared/desktop/image-category-thumbnail-earphones.png';
 
 export default function Categories() {
   const classes = clsx(styles.categories__item, styles.item);
