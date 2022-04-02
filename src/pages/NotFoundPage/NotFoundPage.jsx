@@ -1,5 +1,5 @@
 import React from 'react';
 
-export default function Headphones() {
+export default function NotFoundPage() {
   return <div></div>;
 }
