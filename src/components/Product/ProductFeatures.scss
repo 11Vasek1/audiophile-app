@@ -5,13 +5,16 @@
     &__features{
         width: 635px;
     }
-}
 
-product-features__features
+    &__title{
+        margin-bottom: 32px;
+    }
+}
 
 .product-feature{
     display: flex;
     &__number{
         margin-right: 21px;
     }
+    margin-bottom: 8px;
 }

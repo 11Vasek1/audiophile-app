@@ -11,6 +11,7 @@ body {
   font-weight: 500;
   font-size: 15px;
   line-height: 25px;
+  color: #00000080;
   background-color: #fff;
 }
 
@@ -99,7 +100,7 @@ body {
   letter-spacing: 2px;
   text-transform: uppercase;
 
-  &--orange{
+  &--orange {
     color: $accent;
   }
 }
@@ -266,4 +267,32 @@ body {
       }
     }
   }
+}
+
+.items {
+  &__name {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 44px;
+    text-align: center;
+    letter-spacing: 1.42857px;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #191919;
+    padding: 100px 0;
+    margin-bottom: 150px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  background-color: #f6ffee;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background-color: #191919;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f6ffee;
 }

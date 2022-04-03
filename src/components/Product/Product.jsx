@@ -5,6 +5,10 @@ import ProductFeatures from './ProductFeatures';
 import ProductFotos from './ProductFotos';
 import ProductInfo from '../ProductInfo/ProductInfo';
 import ProductLike from './ProductLike';
+import Categories from '../Categories/Categories';
+import About from '../About/About';
+import Input from '../UI/Input';
+import Button from '../UI/Button';
 
 
 
@@ -17,29 +21,63 @@ function Product({product}) {
 	const navigate = useNavigate();
 	const goBack = ()=>navigate(-1);
 
+	const productInfoChild = 
+	<>
+		<p className='h6 product-info__price'>$ {price}</p>
+		
+		<div className="product-info__store">
+
+			<div className="number">
+				<div className="number__field">
+				<input
+					className="number__input"
+					type="number"
+					defaultValue="1"
+					min="1"
+				/>
+				</div>
+				<div className="number__spin minus"></div>
+				<div className="number__spin plus"></div>
+			</div>
+
+			<Button children="ADD TO CART" />
+
+		</div>
+		
+	</>
+
 	return (
 		<div className="container">
-				<button type='button' onClick={goBack}>Вернуться</button>
-				<ProductInfo 
-					name={name}
-					image={image}
-					isNew={isNew}
-					description={description}	
-					isReverse={false}
-					content = {
-						<div></div>
-					}			
-				/>
-				<ProductFeatures
-					features={features}
-					includes={includes}
-				/>
-				<ProductFotos gallery={gallery}/>
-				<ProductLike others={others}/>
-			</div>
+			<button type='button' className='product-link-back product__link-back' onClick={goBack}>Go Back</button>
+			<ProductInfo 
+				name={name}
+				image={image}
+				isNew={isNew}
+				description={description}	
+				isReverse={false}
+				content = {
+					productInfoChild
+					
+				}	
+			/>
+			<ProductFeatures
+				features={features}
+				includes={includes}
+				elementClassName="product__features"
+			/>
+
+
+			<ProductFotos gallery={gallery}/>
+			<ProductLike 
+				others={others}
+				elementClassName="product__like"
+			/>
+
+			<Categories />
+			<About />
+		</div>
 	);
 }
-
 
 export default Product;
 
