@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import styles from './Navbar.module.scss';
@@ -7,7 +7,8 @@ import LogoSvg from '../../../assets/shared/desktop/logo.svg';
 import CartSvg from '../../../assets/shared/desktop/icon-cart.svg';
 
 export default function Navbar() {
-  const [isActiveNav, setIsActiveNav] = useState(false);
+  const [isMenuActive, setMenuActive] = useState(false);
+
   const classes = ({ isActive }) => {
     return clsx({
       [styles.active]: isActive,
@@ -16,16 +17,15 @@ export default function Navbar() {
   };
 
   const classesNavbar = clsx(styles.navbar, {
-    [styles.navbarActive]: isActiveNav,
+    [styles.navbarActive]: isMenuActive,
   });
-
-  function handleToggle() {
-    setIsActiveNav(!isActiveNav);
-  }
 
   return (
     <nav className={classesNavbar}>
-      <button className={styles.menu__btn} onClick={handleToggle}>
+      <button
+        className={styles.menu__btn}
+        onClick={() => setMenuActive(!isMenuActive)}
+      >
         <svg width="16" height="15" xmlns="http://www.w3.org/2000/svg">
           <g fill="#FFF" fillRule="evenodd">
             <path d="M0 0h16v3H0zM0 6h16v3H0zM0 12h16v3H0z" />
@@ -36,22 +36,22 @@ export default function Navbar() {
         <img src={LogoSvg} alt="logo icon" />
       </NavLink>
       <ul className={styles.menu}>
-        <li className={styles.menu__item}>
+        <li className={styles.menu__item} onClick={() => setMenuActive(false)}>
           <NavLink to="/" className={classes}>
             Home
           </NavLink>
         </li>
-        <li className={styles.menu__item}>
+        <li className={styles.menu__item} onClick={() => setMenuActive(false)}>
           <NavLink to="/items/headphones" className={classes}>
             HEADPHONES
           </NavLink>
         </li>
-        <li className={styles.menu__item}>
+        <li className={styles.menu__item} onClick={() => setMenuActive(false)}>
           <NavLink to="/items/speakers" className={classes}>
             SPEAKERS
           </NavLink>
         </li>
-        <li className={styles.menu__item}>
+        <li className={styles.menu__item} onClick={() => setMenuActive(false)}>
           <NavLink to="/items/earphones" className={classes}>
             EARPHONES
           </NavLink>
