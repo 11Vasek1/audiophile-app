@@ -1,9 +1,12 @@
-export function getDevice() {
-  // TODO normal get device function
-  return 'desktop';
-}
+import useWindowSize from './Hooks/UseWindowSize';
 
-export function formatImgSrc(src) {
-  // TODO format img src
-  return './src/assets/product-xx59-headphones/desktop/image-product.jpg';
+export function getDevice() {
+  const size = useWindowSize();
+  if (size.width <= 375) {
+    return 'mobile';
+  } else if (size.width <= 768) {
+    return 'tablet';
+  } else {
+    return 'desktop';
+  }
 }

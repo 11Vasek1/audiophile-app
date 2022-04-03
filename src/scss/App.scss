@@ -280,7 +280,21 @@ body {
     color: #fff;
     background-color: #191919;
     padding: 100px 0;
-    margin-bottom: 150px;
+    margin-bottom: 100px;
+    @media (max-width: 768px) {
+      padding: 70px 0;
+      margin-bottom: 70px;
+      font-size: 32px;
+      line-height: 36px;
+      letter-spacing: 1.15px;
+    }
+    @media (max-width: 375px) {
+      margin-bottom: 30px;
+      padding: 30px 0;
+      font-size: 24px;
+      line-height: 33px;
+      letter-spacing: 1.7px;
+    }
   }
 }
 

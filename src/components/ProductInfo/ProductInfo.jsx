@@ -1,6 +1,6 @@
 import React from 'react';
 import './ProductInfo.scss';
-import { formatImgSrc, getDevice } from '../../utils';
+import { getDevice } from '../../utils';
 
 function ProductInfo({
   name,

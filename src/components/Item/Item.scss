@@ -1,7 +1,7 @@
 .item {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 150px;
+  padding-bottom: 80px;
   &:nth-child(even) {
     flex-direction: row-reverse;
     .item__img {
@@ -27,22 +27,15 @@
   }
   @media (max-width: 768px) {
     display: block;
-    margin: 0;
-    padding-bottom: 120px;
+    margin: 0 auto 30px;
+    padding-bottom: 50px;
+  }
+  @media (max-width: 540px) {
+    padding-bottom: 20px;
   }
   &__img {
-    width: 540px;
-    height: 560px;
-    margin-right: 60px;
-    @media (max-width: 1100px) {
-      margin-right: 30px;
-    }
-    @media (max-width: 1100px) {
-      width: 430px;
-      height: 485px;
-    }
-    @media (max-width: 768px) {
-      margin: 0 auto 50px;
+    @media (min-width: 376px) {
+      margin: 0 auto 20px;
     }
   }
   &__box {

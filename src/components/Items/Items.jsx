@@ -1,12 +1,14 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Item from '../Item/Item';
+import Categories from '../Categories/Categories';
+import About from '../About/About';
+
 import '../../scss/App.scss';
 
 export default function Items(props) {
   const { items } = props;
   const { category } = useParams();
-  console.log(category);
   return (
     <>
       <ul className="items">
@@ -19,6 +21,8 @@ export default function Items(props) {
             })}
         </div>
       </ul>
+      <Categories />
+      <About />
     </>
   );
 }

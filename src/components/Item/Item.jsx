@@ -1,23 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../UI/Button';
-import { formatImgSrc, getDevice } from '../../utils';
+import { getDevice } from '../../utils';
 
 import '../../scss/App.scss';
 import './Item.scss';
 
 export default function Item(props) {
   const { details } = props;
-  console.log(details.image);
-  const imageSrc = formatImgSrc(details.image[getDevice()]);
-
-  console.log(imageSrc);
+  const imageSrc = details.image[getDevice()];
   return (
     <>
       <li className="item">
         <img
           className="item__img"
-          src={`../${details.image.desktop}`}
+          src={`../${imageSrc}`}
           alt={`${details.name} image`}
         />
         <div className="item__box">
