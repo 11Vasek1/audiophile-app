@@ -1,4 +1,4 @@
-import useWindowSize from './Hooks/UseWindowSize';
+import useWindowSize from './Hooks/useWindowSize';
 
 export function getDevice() {
   const size = useWindowSize();
