@@ -1,7 +1,7 @@
 .preview {
-  padding-bottom: 75px;
+  margin-bottom: 75px;
   @media (max-width: 768px) {
-    padding-bottom: 15px;
+    margin-bottom: 15px;
   }
 }
 
@@ -11,7 +11,7 @@
   justify-content: center;
   margin-bottom: 50px;
   background-color: #d87d4a;
-  background-image: url('../../assets/home/desktop/pattern-circles.svg');
+  background-image: url('../../../assets/home/desktop/pattern-circles.svg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
@@ -70,17 +70,17 @@
 }
 
 .item__medium {
-  background-image: url('../../assets/home/desktop/image-speaker-zx7.jpg');
+  background-image: url('../../../assets/home/desktop/image-speaker-zx7.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   margin-bottom: 50px;
   @media (max-width: 768px) {
-    background-image: url('../../assets/home/tablet/image-speaker-zx7.jpg');
+    background-image: url('../../../assets/home/tablet/image-speaker-zx7.jpg');
     margin-bottom: 30px;
   }
   @media (max-width: 375px) {
-    background-image: url('../../assets/home/mobile/image-speaker-zx7.jpg');
+    background-image: url('../../../assets/home/mobile/image-speaker-zx7.jpg');
     margin-bottom: 30px;
   }
   &_about {
