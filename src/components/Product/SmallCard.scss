@@ -1,0 +1,13 @@
+.small-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__image{
+        border-radius: 8px;
+    }
+
+    &__title{
+        margin: 40px 0px 32px 0px;
+    }
+}

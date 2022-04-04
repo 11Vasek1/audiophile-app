@@ -1,0 +1,20 @@
+.product-gallery{
+    display: grid;
+    row-gap: 32px;
+    column-gap: 30px;
+
+    grid-template-columns: 445px 635px;
+    grid-template-rows: repeat(2, 280px);
+
+    &__img{
+        border-radius: 8px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__img2{
+        grid-column: 2/3;
+        grid-row: 1/3;
+    }
+}

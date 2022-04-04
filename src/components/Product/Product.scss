@@ -1,3 +1,33 @@
-.card{
-    
+.product{
+    &__link-back{
+        margin-top: 79px;
+        margin-bottom: 56px;
+    }
+
+    &__features{
+        margin: 160px 0px;
+    }
+
+    &__like{
+        margin: 160px 0px;
+    }
+}
+
+.product-link-back{
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 25px;
+    /* identical to box height, or 167% */
+
+    padding: 0;
+    border: none;
+    background-color: transparent;
+
+
+    color: #000000;
+
+    mix-blend-mode: normal;
+    opacity: 0.5;
 }

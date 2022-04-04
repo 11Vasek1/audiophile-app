@@ -22,3 +22,14 @@
         margin-bottom: 32px;
     }
 }
+
+.product-info{
+    &__store{
+        display: flex;
+        gap: 30px;
+    }
+    &__price{
+        margin-top: 32px;
+        margin-bottom: 47px;
+    }
+}
