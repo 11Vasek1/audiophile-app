@@ -6,7 +6,7 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import Items from './components/Items/Items';
 import Cart from './components/Cart/Cart';
 
-import DB from './data.json';
+import DB from './../assets/db.json';
 
 import './scss/App.scss';
 import Product from './components/Product/Product.jsx';

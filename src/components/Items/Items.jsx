@@ -14,7 +14,7 @@ export default function Items(props) {
       <ul className="items">
         <h2 className="items__name">{category}</h2>
         <div className="container">
-          {items
+          {items.products
             .filter((item) => item.category === category)
             .map((item) => {
               return <Item key={item.id} details={item}></Item>;
