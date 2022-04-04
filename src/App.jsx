@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Items, Cart, Product, Layout } from './components';
 import { Home, NotFoundPage } from './pages';
-//import DB from './../assets/db.json';
 
 import './scss/App.scss';
 
@@ -106,7 +105,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="items/:category" element={<Items items={DB} />} />
+            <Route path="items/:category" element={<Items />} />
             <Route
               path="items/:category/:id"
               element={<Product product={data} />}
