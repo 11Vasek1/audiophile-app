@@ -16,50 +16,66 @@ export default function Navbar() {
     });
   };
 
-  const classesNavbar = clsx(styles.navbar, {
+  const classesNavbar = clsx(styles.navbar__box, {
     [styles.navbarActive]: isMenuActive,
   });
 
   return (
-    <nav className={classesNavbar}>
-      <button
-        className={styles.menu__btn}
-        onClick={() => setMenuActive(!isMenuActive)}
-      >
-        <svg width="16" height="15" xmlns="http://www.w3.org/2000/svg">
-          <g fill="#FFF" fillRule="evenodd">
-            <path d="M0 0h16v3H0zM0 6h16v3H0zM0 12h16v3H0z" />
-          </g>
-        </svg>
-      </button>
-      <NavLink to="/" className={styles.navbar__brand}>
-        <img src={LogoSvg} alt="logo icon" />
-      </NavLink>
-      <ul className={styles.menu}>
-        <li className={styles.menu__item} onClick={() => setMenuActive(false)}>
-          <NavLink to="/" className={classes}>
-            Home
+    <nav className={styles.navbar}>
+      <div className={styles.navbar__container}>
+        <div className={classesNavbar}>
+          <button
+            className={styles.menu__btn}
+            onClick={() => setMenuActive(!isMenuActive)}
+          >
+            <svg width="16" height="15" xmlns="http://www.w3.org/2000/svg">
+              <g fill="#FFF" fillRule="evenodd">
+                <path d="M0 0h16v3H0zM0 6h16v3H0zM0 12h16v3H0z" />
+              </g>
+            </svg>
+          </button>
+          <NavLink to="/" className={styles.navbar__brand}>
+            <img src={LogoSvg} alt="logo icon" />
           </NavLink>
-        </li>
-        <li className={styles.menu__item} onClick={() => setMenuActive(false)}>
-          <NavLink to="/items/headphones" className={classes}>
-            HEADPHONES
+          <ul className={styles.menu}>
+            <li
+              className={styles.menu__item}
+              onClick={() => setMenuActive(false)}
+            >
+              <NavLink to="/" className={classes}>
+                Home
+              </NavLink>
+            </li>
+            <li
+              className={styles.menu__item}
+              onClick={() => setMenuActive(false)}
+            >
+              <NavLink to="/items/headphones" className={classes}>
+                HEADPHONES
+              </NavLink>
+            </li>
+            <li
+              className={styles.menu__item}
+              onClick={() => setMenuActive(false)}
+            >
+              <NavLink to="/items/speakers" className={classes}>
+                SPEAKERS
+              </NavLink>
+            </li>
+            <li
+              className={styles.menu__item}
+              onClick={() => setMenuActive(false)}
+            >
+              <NavLink to="/items/earphones" className={classes}>
+                EARPHONES
+              </NavLink>
+            </li>
+          </ul>
+          <NavLink to="/cart" className={styles.cart__btn}>
+            <img src={CartSvg} alt="cart icon" />
           </NavLink>
-        </li>
-        <li className={styles.menu__item} onClick={() => setMenuActive(false)}>
-          <NavLink to="/items/speakers" className={classes}>
-            SPEAKERS
-          </NavLink>
-        </li>
-        <li className={styles.menu__item} onClick={() => setMenuActive(false)}>
-          <NavLink to="/items/earphones" className={classes}>
-            EARPHONES
-          </NavLink>
-        </li>
-      </ul>
-      <NavLink to="/cart" className={styles.cart__btn}>
-        <img src={CartSvg} alt="cart icon" />
-      </NavLink>
+        </div>
+      </div>
     </nav>
   );
 }
