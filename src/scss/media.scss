@@ -1,0 +1,25 @@
+$pc: 1200px;
+$tablet: 768px;
+$mobile: 375px;
+
+// 1800 - 1200 pc
+// 1200 - 768 tablet
+// 768 - 375
+
+@mixin media-pc {
+    @media screen and (min-width: #{$pc+1}) {
+        @content;
+    }
+}
+
+@mixin media-tablet {
+    @media screen and (max-width: $pc) {
+        @content;
+    }
+}
+
+@mixin media-mobile {
+    @media screen and (max-width: $tablet) {
+        @content;
+    }
+}
