@@ -4,12 +4,13 @@ import Item from '../Item/Item';
 import Categories from '../Categories/Categories';
 import About from '../About/About';
 import useFetch from '../../Hooks/useFetch';
+import Loader from '../UI/Loader/Loader';
 
-import '../../scss/App.scss';
+import './Items.scss';
 
 export default function Items() {
   const [items, setItems] = useState([]);
-  const { get } = useFetch('http://localhost:3001/');
+  const { get, loading } = useFetch('http://localhost:3001/');
   const { category } = useParams();
 
   useEffect(() => {
@@ -23,6 +24,7 @@ export default function Items() {
       <ul className="items">
         <h2 className="items__name">{category}</h2>
         <div className="container">
+          {loading && <Loader className="items__loader" />}
           {items
             .filter((item) => item.category === category)
             .map((item) => {
