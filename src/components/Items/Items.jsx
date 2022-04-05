@@ -16,7 +16,7 @@ export default function Items() {
     get('items')
       .then((data) => setItems(data))
       .catch((error) => console.log('Could not load products', error));
-  });
+  }, []);
 
   return (
     <>
@@ -30,8 +30,10 @@ export default function Items() {
             })}
         </div>
       </ul>
-      <Categories />
-      <About />
+      <div className="container">
+        <Categories />
+        <About />
+      </div>
     </>
   );
 }

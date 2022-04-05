@@ -1,13 +1,23 @@
 @import '../../scss/vars';
 
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  padding: 35px 15px;
-  border-bottom: 1px solid #ffffff33;
   background-color: #191919;
-  @media (max-width: 1200px) {
-    position: relative;
+  &__container {
+    max-width: 1100px;
+    padding: 0 10px;
+    margin: 0 auto;
+    @media (max-width: 768px) {
+      max-width: 689px;
+    }
+  }
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    padding: 35px 15px;
+    border-bottom: 1px solid #ffffff33;
+    @media (max-width: 1200px) {
+      position: relative;
+    }
   }
   &__brand {
     @media (max-width: 1200px) {
@@ -62,7 +72,7 @@
 }
 
 @media (max-width: 1200px) {
-  .navbar.navbarActive .menu {
+  .navbar__container.navbarActive .menu {
     transform: translateY(0);
   }
 }
