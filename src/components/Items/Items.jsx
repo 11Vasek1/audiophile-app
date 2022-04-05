@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Item from '../Item/Item';
 import Categories from '../Categories/Categories';
 import About from '../About/About';
+import useFetch from '../../Hooks/useFetch';
 
 import '../../scss/App.scss';
 
-export default function Items(props) {
-  const { items } = props;
+export default function Items() {
+  const [items, setItems] = useState([]);
+  const { get } = useFetch('http://localhost:3001/');
   const { category } = useParams();
+
+  useEffect(() => {
+    get('items')
+      .then((data) => setItems(data))
+      .catch((error) => console.log('Could not load products', error));
+  });
+
   return (
     <>
       <ul className="items">

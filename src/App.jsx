@@ -1,15 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout';
-import Home from './pages/Home/Home';
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import Items from './components/Items/Items';
-import Cart from './components/Cart/Cart';
-
-import DB from './data.json';
+import { Items, Cart, Product, Layout } from './components';
+import { Home, NotFoundPage } from './pages';
 
 import './scss/App.scss';
-import Product from './components/Product/Product.jsx';
 
 function App() {
   const data = {
@@ -111,7 +105,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="items/:category" element={<Items items={DB} />} />
+            <Route path="items/:category" element={<Items />} />
             <Route
               path="items/:category/:id"
               element={<Product product={data} />}
