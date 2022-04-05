@@ -1,8 +1,8 @@
-import React from 'react';
-import { useNavigate } from 'react-router';
-import './Product.scss';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import useFetch from '../../Hooks/useFetch';
 import ProductFeatures from './ProductFeatures';
-import ProductFotos from './ProductFotos';
+import ProductPhotos from './ProductPhotos';
 import ProductInfo from '../ProductInfo/ProductInfo';
 import ProductLike from './ProductLike';
 import Categories from '../Categories/Categories';
@@ -10,77 +10,99 @@ import About from '../About/About';
 import Input from '../UI/Input';
 import Button from '../UI/Button';
 
+import './Product.scss';
 
+function Product() {
+  const [product, setProduct] = useState({});
+  const { get } = useFetch('http://localhost:3001/');
+  const params = useParams();
 
-function Product({product}) {
-	const newData = Object.assign({}, product);
-	newData.isNew = newData.new;
+  useEffect(() => {
+    get(`items/${params.id}`)
+      .then((data) => {
+        setProduct(data);
+      })
+      .catch((error) => console.log('Could not load product details', error));
+  }, []);
 
-	const {name, image, isNew, price, description, features, includes, gallery, others} = newData;
+  const navigate = useNavigate();
 
-	const navigate = useNavigate();
-	const goBack = ()=>navigate(-1);
+  product.isNew = product.new;
 
-	const productInfoChild = 
-	<>
-		<p className='h6 product-info__price'>$ {price}</p>
-		
-		<div className="product-info__store">
+  const {
+    name,
+    image,
+    isNew,
+    price,
+    description,
+    features,
+    includes,
+    gallery,
+    others,
+  } = product;
 
-			<div className="number">
-				<div className="number__field">
-				<input
-					className="number__input"
-					type="number"
-					defaultValue="1"
-					min="1"
-				/>
-				</div>
-				<div className="number__spin minus"></div>
-				<div className="number__spin plus"></div>
-			</div>
+  const goBack = () => navigate(-1);
 
-			<Button children="ADD TO CART" />
+  const productInfoChild = (
+    <>
+      <p className="h6 product-info__price">$ {price}</p>
 
-		</div>
-		
-	</>
+      <div className="product-info__store">
+        <div className="number">
+          <div className="number__field">
+            <input
+              className="number__input"
+              type="number"
+              defaultValue="1"
+              min="1"
+            />
+          </div>
+          <div className="number__spin minus"></div>
+          <div className="number__spin plus"></div>
+        </div>
 
-	return (
-		<div className="container">
-			<button type='button' className='product-link-back product__link-back' onClick={goBack}>Go Back</button>
-			<ProductInfo 
-				name={name}
-				image={image}
-				isNew={isNew}
-				description={description}	
-				isReverse={false}
-				content = {
-					productInfoChild
-					
-				}	
-			/>
-			<ProductFeatures
-				features={features}
-				includes={includes}
-				elementClassName="product__features"
-			/>
+        <Button>ADD TO CART</Button>
+      </div>
+    </>
+  );
 
+  return (
+    <div className="container">
+      <button
+        type="button"
+        className="product-link-back product__link-back"
+        onClick={goBack}
+      >
+        Go Back
+      </button>
+      {image && (
+        <ProductInfo
+          name={name}
+          image={image}
+          isNew={isNew}
+          description={description}
+          isReverse={false}
+          content={productInfoChild}
+        />
+      )}
+      <ProductFeatures
+        features={features}
+        includes={includes}
+        elementClassName="product__features"
+      />
 
-			<ProductFotos gallery={gallery}/>
-			<ProductLike 
-				others={others}
-				elementClassName="product__like"
-			/>
+      {gallery && <ProductPhotos gallery={gallery} />}
+      {others && (
+        <ProductLike others={others} elementClassName="product__like" />
+      )}
 
-			<Categories />
-			<About />
-		</div>
-	);
+      <Categories />
+      <About />
+    </div>
+  );
 }
 
 export default Product;
-
 
 // const data = {
 // 	"id": 1,

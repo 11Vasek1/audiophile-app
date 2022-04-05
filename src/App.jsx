@@ -106,10 +106,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="items/:category" element={<Items />} />
-            <Route
-              path="items/:category/:id"
-              element={<Product product={data} />}
-            />
+            <Route path="items/:category/:id" element={<Product />} />
             <Route path="cart" element={<Cart />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
