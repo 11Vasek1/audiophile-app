@@ -2,8 +2,8 @@ import {React} from "react";
 import "../../scss/App.scss";
 import "./ProductFeatures.scss"
 
-function ProductFeatures({features, includes, elementClassName}){
-    const className = "product-features " + ( elementClassName || '' )
+function ProductFeatures({features, includes}){
+    const className = "product-features"
     return(
         <div className={className}>
             <div className="product-features__features">

@@ -1,12 +1,19 @@
 import useWindowSize from './Hooks/useWindowSize';
 
+const BREAKPOINTS = [
+  [1200, 'desktop'],
+  [768, 'tablet'],
+]
+
 export function getDevice() {
   const size = useWindowSize();
-  if (size.width <= 375) {
-    return 'mobile';
-  } else if (size.width <= 768) {
-    return 'tablet';
-  } else {
-    return 'desktop';
+
+  for (let i = 0; i < BREAKPOINTS.length; i++) {
+    const breakpoint = BREAKPOINTS[i];
+    if (breakpoint[0] < size.width) {
+      return breakpoint[1]
+    }
   }
+
+  return 'mobile';
 }

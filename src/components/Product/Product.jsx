@@ -9,8 +9,14 @@ import Categories from '../Categories/Categories';
 import About from '../About/About';
 import Input from '../UI/Input';
 import Button from '../UI/Button';
+import Spacer from '../Spacer';
 
 
+const space = {
+	mobile: 88,
+	tablet: 120,
+	desktop: 160,
+}
 
 function Product({product}) {
 	const newData = Object.assign({}, product);
@@ -24,7 +30,7 @@ function Product({product}) {
 	const productInfoChild = 
 	<>
 		<p className='h6 product-info__price'>$ {price}</p>
-		
+
 		<div className="product-info__store">
 
 			<div className="number">
@@ -60,21 +66,24 @@ function Product({product}) {
 					
 				}	
 			/>
+			<Spacer space={space} />
 			<ProductFeatures
 				features={features}
 				includes={includes}
-				elementClassName="product__features"
 			/>
-
+			<Spacer space={space} />
 
 			<ProductFotos gallery={gallery}/>
+			<Spacer space={space} />
 			<ProductLike 
 				others={others}
-				elementClassName="product__like"
 			/>
+			<Spacer space={space} />
 
 			<Categories />
+			<Spacer space={space} />
 			<About />
+			<Spacer space={space} />
 		</div>
 	);
 }

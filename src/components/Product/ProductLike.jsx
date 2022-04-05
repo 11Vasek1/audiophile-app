@@ -2,8 +2,8 @@ import React from 'react';
 import './ProductLike.scss';
 import SmallCard from './SmallCard';
 
-function ProductLike({others, elementClassName}){
-    const className = "product-like " + ( elementClassName || '' );
+function ProductLike({others}){
+    const className = "product-like"
     
     const cards = others.map( (product, index) => 
         <SmallCard
@@ -11,8 +11,7 @@ function ProductLike({others, elementClassName}){
             product={product}
         /> 
     )
-
-
+    
     return(
         <div className={className} >
             <h3 className="h3 product-like__title">you may also like</h3>
