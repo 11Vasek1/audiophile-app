@@ -13,7 +13,7 @@ export default function Items() {
   const { category } = useParams();
 
   useEffect(() => {
-    get('products')
+    get('items')
       .then((data) => setItems(data))
       .catch((error) => console.log('Could not load products', error));
   });
