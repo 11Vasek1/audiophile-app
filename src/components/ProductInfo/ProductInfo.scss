@@ -1,3 +1,5 @@
+@import '../../scss/media.scss';
+
 .card-info{
     display: flex;
     align-items: center;
@@ -17,6 +19,14 @@
 .card-info-content{
     width: 445px;
 
+    @include media-tablet{
+        width: 400px;
+    }
+
+    @include media-mobile{
+        width: 300px;
+    }
+
     &__title{
         margin-top: 16px;
         margin-bottom: 32px;
@@ -32,4 +42,9 @@
         margin-top: 32px;
         margin-bottom: 47px;
     }
+
+    
 }
+
+
+
