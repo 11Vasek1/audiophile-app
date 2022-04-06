@@ -1,9 +1,15 @@
+@import '../../scss/media.scss';
+
 .product-features{
     display: flex;
     justify-content: space-between;
     
     &__features{
         width: 635px;
+        @include media-tablet{
+            width: auto;
+            margin-bottom: 120px;
+        }
     }
 
     &__title{
@@ -12,6 +18,20 @@
 
     &__box{
         width: 350px;
+        @include media-tablet{
+            width: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 10px;
+        }
+
+        @include media-mobile{
+            display: block;
+        }
+    }
+
+    @include media-tablet{
+        flex-direction: column;
     }
 }
 

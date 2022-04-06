@@ -2,8 +2,8 @@ import React from 'react';
 import './ProductLike.scss';
 import SmallCard from './SmallCard';
 
-function ProductLike({ others, elementClassName }) {
-  const className = 'product-like ' + (elementClassName || '');
+function ProductLike({ others }) {
+  const className = 'product-like ';
 
   const cards = others.map((product, index) => (
     <SmallCard key={index} product={product} />

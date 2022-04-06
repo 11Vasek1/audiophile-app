@@ -1,3 +1,6 @@
+@import '../../scss/media.scss';
+@import '../../scss/vars.scss';
+
 .small-card{
     display: flex;
     flex-direction: column;
@@ -5,9 +8,26 @@
 
     &__image{
         border-radius: 8px;
+
+        @include media-mobile{
+            height: 32vw;
+            width: 100%;
+            object-fit: contain;
+            background-color: $bg;
+        }
     }
 
     &__title{
-        margin: 40px 0px 32px 0px;
+        margin: 36px 0px;
+
+        @include media-tablet{
+            margin: 40px 0px 32px 0px;
+        }
+
+        @include media-mobile{
+            margin: 32px 0px;
+        }
+
+
     }
 }

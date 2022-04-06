@@ -1,20 +1,26 @@
 import React from 'react';
-import useWindowSize from '../Hooks/UseWindowSize';
+import { getDevice } from '../utils';
 
-export default function Spacer(props) {
-  let { space, style = {}, children } = props;
-  const size = useWindowSize();
-  if (size.width <= 768) {
-    space = 0.4 * space;
-  } else if (size.width <= 1200) {
-    space = 0.6 * space;
-  } else {
-    space = space;
+export default function Spacer({space, style = {}, children}) {
+  let _space = parseInt(space);
+  const isObj = isNaN( _space );
+
+  const device = getDevice();
+
+  console.log(device);
+
+  // debugger;
+
+  if ( isObj ) {
+    _space = space[ device ] || 0
   }
+
+
+
   return (
     <div
       style={{
-        marginBottom: space,
+        marginBottom: _space,
         ...style,
       }}
     >
