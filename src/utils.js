@@ -1,4 +1,6 @@
-import useWindowSize from './Hooks/useWindowSize';
+// import useWindowSize from '../UseWindowSize';
+
+import useWindowSize from "./Hooks/UseWindowSize";
 
 const BREAKPOINTS = [
   [1200, 'desktop'],
@@ -6,7 +8,11 @@ const BREAKPOINTS = [
 ]
 
 export function getDevice() {
+
+  // debugger;
   const size = useWindowSize();
+
+  // const size = {width: 1300}
 
   for (let i = 0; i < BREAKPOINTS.length; i++) {
     const breakpoint = BREAKPOINTS[i];

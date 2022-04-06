@@ -1,0 +1,28 @@
+@import '../../scss/vars';
+
+.cart{
+    position: absolute;
+    padding: 32px;
+    background-color: $bg;
+    border-radius: 8px;
+    
+    top: 300px;
+    right: 300px;
+
+    &__head{
+
+    }
+
+    &__remove{
+
+    }
+
+    &__content{
+        
+    }
+
+    &__total{
+        
+    }
+}
+

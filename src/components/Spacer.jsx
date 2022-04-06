@@ -7,15 +7,9 @@ export default function Spacer({space, style = {}, children}) {
 
   const device = getDevice();
 
-  console.log(device);
-
-  // debugger;
-
   if ( isObj ) {
     _space = space[ device ] || 0
   }
-
-
 
   return (
     <div
