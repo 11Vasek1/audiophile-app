@@ -6,6 +6,8 @@ const BREAKPOINTS = [
 ]
 
 export function getDevice() {
+
+  debugger;
   const size = useWindowSize();
 
   for (let i = 0; i < BREAKPOINTS.length; i++) {

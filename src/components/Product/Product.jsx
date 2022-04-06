@@ -1,8 +1,8 @@
-import React from 'react';
-import { useNavigate } from 'react-router';
-import './Product.scss';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import useFetch from '../../Hooks/useFetch';
 import ProductFeatures from './ProductFeatures';
-import ProductFotos from './ProductFotos';
+import ProductPhotos from './ProductPhotos';
 import ProductInfo from '../ProductInfo/ProductInfo';
 import ProductLike from './ProductLike';
 import Categories from '../Categories/Categories';
@@ -12,172 +12,100 @@ import Button from '../UI/Button';
 import Spacer from '../Spacer';
 import Cart from '../Cart/Cart';
 
+import './Product.scss';
 
 const space = {
-	mobile: 88,
-	tablet: 120,
-	desktop: 160,
-}
+  mobile: 88,
+  tablet: 120,
+  desktop: 160,
+};
 
-function Product({product}) {
-	const newData = Object.assign({}, product);
-	newData.isNew = newData.new;
+function Product() {
+  const [product, setProduct] = useState({});
+  const { get } = useFetch('http://localhost:3001/');
+  const params = useParams();
 
-	const {name, image, isNew, price, description, features, includes, gallery, others} = newData;
+  useEffect(() => {
+    get(`items/${params.id}`)
+      .then((data) => {
+        setProduct(data);
+      })
+      .catch((error) => console.log('Could not load product details', error));
+  }, []);
 
-	const navigate = useNavigate();
-	const goBack = ()=>navigate(-1);
+  const navigate = useNavigate();
 
-	const productInfoChild = 
-	<>
-		<Cart />
-		<p className='h6 product-info__price'>$ {price}</p>
+  product.isNew = product.new;
 
-		<div className="product-info__store">
+  const {
+    name,
+    image,
+    isNew,
+    price,
+    description,
+    features,
+    includes,
+    gallery,
+    others,
+  } = product;
 
-			<div className="number">
-				<div className="number__field">
-				<input
-					className="number__input"
-					type="number"
-					defaultValue="1"
-					min="1"
-				/>
-				</div>
-				<div className="number__spin minus"></div>
-				<div className="number__spin plus"></div>
-			</div>
+  const goBack = () => navigate(-1);
 
-			<Button children="ADD TO CART" />
+  const productInfoChild = (
+    <>
+      <p className="h6 product-info__price">$ {price}</p>
 
-		</div>
-		
-	</>
+      <div className="product-info__store">
+        <div className="number">
+          <div className="number__field">
+            <input
+              className="number__input"
+              type="number"
+              defaultValue="1"
+              min="1"
+            />
+          </div>
+          <div className="number__spin minus"></div>
+          <div className="number__spin plus"></div>
+        </div>
 
-	return (
-		<div className="container">
-			<button type='button' className='product-link-back product__link-back' onClick={goBack}>Go Back</button>
-			<ProductInfo 
-				name={name}
-				image={image}
-				isNew={isNew}
-				description={description}	
-				isReverse={false}
-				content = {
-					productInfoChild
-					
-				}	
-			/>
-			<Spacer space={space} />
-			<ProductFeatures
-				features={features}
-				includes={includes}
-			/>
-			<Spacer space={space} />
+        <Button>ADD TO CART</Button>
+      </div>
+    </>
+  );
 
-			<ProductFotos gallery={gallery}/>
-			<Spacer space={space} />
-			<ProductLike 
-				others={others}
-			/>
-			<Spacer space={space} />
+  return (
+    <div className="container">
+      <button
+        type="button"
+        className="product-link-back product__link-back"
+        onClick={goBack}
+      >
+        Go Back
+      </button>
+      {image && (
+        <ProductInfo
+          name={name}
+          image={image}
+          isNew={isNew}
+          description={description}
+          isReverse={false}
+          content={productInfoChild}
+        />
+      )}
+      <Spacer space={space}>
+        <ProductFeatures features={features} includes={includes} />
 
-			<Categories />
-			<Spacer space={space} />
-			<About />
-			<Spacer space={space} />
-		</div>
-	);
+        {gallery && <ProductPhotos gallery={gallery} />}
+        {others && <ProductLike others={others} />}
+      </Spacer>
+
+      <Categories />
+      <Spacer space={space}>
+        <About />
+      </Spacer>
+    </div>
+  );
 }
 
 export default Product;
-
-
-// const data = {
-// 	"id": 1,
-// 	"slug": "yx1-earphones",
-// 	"name": "YX1 Wireless Earphones",
-// 	"image": {
-// 		"mobile": "./assets/product-yx1-earphones/mobile/image-product.jpg",
-// 		"tablet": "./assets/product-yx1-earphones/tablet/image-product.jpg",
-// 		"desktop": "./assets/product-yx1-earphones/desktop/image-product.jpg"
-// 	},
-// 	"category": "earphones",
-// 	"categoryImage": {
-// 		"mobile": "./assets/product-yx1-earphones/mobile/image-category-page-preview.jpg",
-// 		"tablet": "./assets/product-yx1-earphones/tablet/image-category-page-preview.jpg",
-// 		"desktop": "./assets/product-yx1-earphones/desktop/image-category-page-preview.jpg"
-// 	},
-// 	"new": true,
-// 	"price": 599,
-// 	"description": "Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.",
-// 	"features": "Experience unrivalled stereo sound thanks to innovative acoustic technology. With improved ergonomics designed for full day wearing, these revolutionary earphones have been finely crafted to provide you with the perfect fit, delivering complete comfort all day long while enjoying exceptional noise isolation and truly immersive sound.\n\nThe YX1 Wireless Earphones features customizable controls for volume, music, calls, and voice assistants built into both earbuds. The new 7-hour battery life can be extended up to 28 hours with the charging case, giving you uninterrupted play time. Exquisite craftsmanship with a splash resistant design now available in an all new white and grey color scheme as well as the popular classic black.",
-// 	"includes": [
-// 		{
-// 			"quantity": 2,
-// 			"item": "Earphone unit"
-// 		},
-// 		{
-// 			"quantity": 6,
-// 			"item": "Multi-size earplugs"
-// 		},
-// 		{
-// 			"quantity": 1,
-// 			"item": "User manual"
-// 		},
-// 		{
-// 			"quantity": 1,
-// 			"item": "USB-C charging cable"
-// 		},
-// 		{
-// 			"quantity": 1,
-// 			"item": "Travel pouch"
-// 		}
-// 	],
-// 	"gallery": {
-// 		"first": {
-// 			"mobile": "./assets/product-yx1-earphones/mobile/image-gallery-1.jpg",
-// 			"tablet": "./assets/product-yx1-earphones/tablet/image-gallery-1.jpg",
-// 			"desktop": "./assets/product-yx1-earphones/desktop/image-gallery-1.jpg"
-// 		},
-// 		"second": {
-// 			"mobile": "./assets/product-yx1-earphones/mobile/image-gallery-2.jpg",
-// 			"tablet": "./assets/product-yx1-earphones/tablet/image-gallery-2.jpg",
-// 			"desktop": "./assets/product-yx1-earphones/desktop/image-gallery-2.jpg"
-// 		},
-// 		"third": {
-// 			"mobile": "./assets/product-yx1-earphones/mobile/image-gallery-3.jpg",
-// 			"tablet": "./assets/product-yx1-earphones/tablet/image-gallery-3.jpg",
-// 			"desktop": "./assets/product-yx1-earphones/desktop/image-gallery-3.jpg"
-// 		}
-// 	},
-// 	"others": [
-// 		{
-// 			"slug": "xx99-mark-one-headphones",
-// 			"name": "XX99 Mark I",
-// 			"image": {
-// 				"mobile": "./assets/shared/mobile/image-xx99-mark-one-headphones.jpg",
-// 				"tablet": "./assets/shared/tablet/image-xx99-mark-one-headphones.jpg",
-// 				"desktop": "./assets/shared/desktop/image-xx99-mark-one-headphones.jpg"
-// 			}
-// 		},
-// 		{
-// 			"slug": "xx59-headphones",
-// 			"name": "XX59",
-// 			"image": {
-// 				"mobile": "./assets/shared/mobile/image-xx59-headphones.jpg",
-// 				"tablet": "./assets/shared/tablet/image-xx59-headphones.jpg",
-// 				"desktop": "./assets/shared/desktop/image-xx59-headphones.jpg"
-// 			}
-// 		},
-// 		{
-// 			"slug": "zx9-speaker",
-// 			"name": "ZX9 Speaker",
-// 			"image": {
-// 				"mobile": "./assets/shared/mobile/image-zx9-speaker.jpg",
-// 				"tablet": "./assets/shared/tablet/image-zx9-speaker.jpg",
-// 				"desktop": "./assets/shared/desktop/image-zx9-speaker.jpg"
-// 			}
-// 		}
-// 	]
-// }
