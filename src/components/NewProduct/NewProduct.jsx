@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../UI/Button';
+
 import clsx from 'clsx';
 
 import styles from './NewProduct.module.scss';
@@ -15,7 +17,9 @@ export default function NewProduct(props) {
           <h4 className={classes}>NEW PRODUCT</h4>
           <h1 className={clsx('h1', styles.title)}>{model}</h1>
           <p className={styles.newProduct__about_describe}>{description}</p>
-          <Button className={styles.newProduct__btn}>See Product</Button>
+          <Link to="/items/headphones/4">
+            <Button className={styles.newProduct__btn}>See Product</Button>
+          </Link>
         </div>
       </div>
     </div>

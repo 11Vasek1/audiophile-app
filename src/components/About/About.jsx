@@ -5,8 +5,9 @@ import AboutImg from '../../../assets/shared/desktop/image-best-gear.jpg';
 import AboutGpg from '../../../assets/shared/tablet/image-best-gear.jpg';
 
 export default function About() {
+  const space = { mobile: 120, tablet: 120, desktop: 200 };
   return (
-    <Spacer space={200}>
+    <Spacer space={space}>
       <div className={styles.about}>
         <img
           className={styles.about__img}
