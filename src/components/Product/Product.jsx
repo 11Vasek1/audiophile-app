@@ -10,6 +10,7 @@ import About from '../About/About';
 import Input from '../UI/Input';
 import Button from '../UI/Button';
 import Spacer from '../Spacer';
+import Cart from '../Cart/Cart';
 
 
 const space = {
@@ -29,6 +30,7 @@ function Product({product}) {
 
 	const productInfoChild = 
 	<>
+		<Cart />
 		<p className='h6 product-info__price'>$ {price}</p>
 
 		<div className="product-info__store">
