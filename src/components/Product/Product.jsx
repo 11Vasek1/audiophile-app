@@ -13,6 +13,7 @@ import Spacer from '../Spacer';
 import Cart from '../Cart/Cart';
 
 import './Product.scss';
+import InputNumber from '../UI/inputNumber';
 
 const space = {
   mobile: 88,
@@ -56,19 +57,7 @@ function Product() {
       <p className="h6 product-info__price">$ {price}</p>
 
       <div className="product-info__store">
-        <div className="number">
-          <div className="number__field">
-            <input
-              className="number__input"
-              type="number"
-              defaultValue="1"
-              min="1"
-            />
-          </div>
-          <div className="number__spin minus"></div>
-          <div className="number__spin plus"></div>
-        </div>
-
+        <InputNumber />
         <Button>ADD TO CART</Button>
       </div>
     </>
@@ -83,27 +72,39 @@ function Product() {
       >
         Go Back
       </button>
-      {image && (
-        <ProductInfo
-          name={name}
-          image={image}
-          isNew={isNew}
-          description={description}
-          isReverse={false}
-          content={productInfoChild}
-        />
-      )}
+
+      <Spacer space={space}>
+        {image && (
+          <ProductInfo
+            name={name}
+            image={image}
+            isNew={isNew}
+            description={description}
+            isReverse={false}
+            content={productInfoChild}
+          />
+        )}
+      </Spacer>
+      
       <Spacer space={space}>
         <ProductFeatures features={features} includes={includes} />
-
-        {gallery && <ProductPhotos gallery={gallery} />}
-        {others && <ProductLike others={others} />}
       </Spacer>
 
-      <Categories />
+      <Spacer space={space}>
+        {gallery && <ProductPhotos gallery={gallery} />}
+      </Spacer>
+      <Spacer space={space}>
+        {others && <ProductLike others={others} />}    
+      </Spacer>
+      <Spacer space={space}>
+        <Categories />
+      </Spacer>
+
       <Spacer space={space}>
         <About />
       </Spacer>
+
+      <Cart />
     </div>
   );
 }
