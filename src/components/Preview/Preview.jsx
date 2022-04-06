@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../UI/Button';
 import Spacer from '../Spacer';
 
@@ -7,8 +8,9 @@ import SpeakersPng from '../../../assets/home/desktop/image-speaker-zx9.png';
 import EarphonesImg from '../../../assets/home/desktop/image-earphones-yx1.jpg';
 
 export default function Preview() {
+  const space = { mobile: 95, tablet: 120, desktop: 200 };
   return (
-    <Spacer space={200}>
+    <Spacer space={space}>
       <div className={styles.preview}>
         <div className={styles.preview__items}>
           <div className={styles.item__big}>
@@ -23,16 +25,20 @@ export default function Preview() {
                 Upgrade to premium speakers that are phenomenally built to
                 deliver truly remarkable sound.
               </p>
-              <Button className={styles.item__big_button}>See Product</Button>
+              <Link to="/items/speakers/6">
+                <Button className={styles.item__big_button}>See Product</Button>
+              </Link>
             </div>
           </div>
 
           <div className={styles.item__medium}>
             <div className={styles.item__medium_about}>
               <h4 className={styles.item__medium_title}>ZX7 SPEAKER</h4>
-              <Button outline className={styles.item__medium_button}>
-                See Product
-              </Button>
+              <Link to="/items/speakers/5">
+                <Button outline className={styles.item__medium_button}>
+                  See Product
+                </Button>
+              </Link>
             </div>
           </div>
 
@@ -44,9 +50,11 @@ export default function Preview() {
             />
             <div className={styles.item__small_about}>
               <h4 className={styles.item__small_title}>YX1 EARPHONES</h4>
-              <Button outline className={styles.item__small_button}>
-                See Product
-              </Button>
+              <Link to="/items/speakers/1">
+                <Button outline className={styles.item__small_button}>
+                  See Product
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
