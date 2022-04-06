@@ -10,6 +10,7 @@ import About from '../About/About';
 import Input from '../UI/Input';
 import Button from '../UI/Button';
 import Spacer from '../Spacer';
+import Cart from '../Cart/Cart';
 
 import './Product.scss';
 
