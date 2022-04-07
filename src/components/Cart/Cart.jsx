@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../UI/Button';
 import './Cart.scss';
+import CartItem from './CartItem';
 
 export default function Cart(props) {
   return <div className='cart'>
@@ -10,14 +11,15 @@ export default function Cart(props) {
     </div>
 
     <div className="cart__content">
-      content
+      <CartItem />
+      <CartItem />
+      <CartItem />
     </div>
     <div className="cart__total">
       <p>TOTAL</p>
       <p className="h6">$ 5,396</p>
     </div>
 
-    <Button children="checkout" />
-
+    <Button children="checkout" className="cart__checkout"/>
   </div>;
 }

@@ -2,27 +2,41 @@
 
 .cart{
     position: absolute;
+    top: 150px;
+    right: 100px;
+
+    width: 100%;
+    max-width: 377px;
     padding: 32px;
-    background-color: $bg;
+    background-color: $title;
     border-radius: 8px;
-    
-    top: 300px;
-    right: 300px;
+
+    border: 1px solid black;
 
     &__head{
-
+        display: flex;
+        justify-content: space-between;
     }
 
     &__remove{
-
+        text-decoration: underline;
+        cursor: pointer;
     }
 
     &__content{
-        
+        margin: 32px 0px;
+        display: grid;
+        row-gap: 24px;
     }
 
     &__total{
-        
+        margin-bottom: 24px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__checkout{
+        width: 100%;
     }
 }
 
