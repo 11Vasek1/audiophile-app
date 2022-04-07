@@ -14,6 +14,7 @@ import Cart from '../Cart/Cart';
 
 import './Product.scss';
 import InputNumber from '../UI/inputNumber';
+import GoBack from '../GoBack/GoBack';
 
 const space = {
   mobile: 88,
@@ -21,9 +22,14 @@ const space = {
   desktop: 160,
 };
 
+// const space
+
+// margin-top: 79px;
+// margin-bottom: 56px;
+
 function Product() {
   const [product, setProduct] = useState({});
-  const { get } = useFetch('http://localhost:3001/');
+  const { get } = useFetch('http://localhost:3002/');
   const params = useParams();
 
   useEffect(() => {
@@ -34,7 +40,7 @@ function Product() {
       .catch((error) => console.log('Could not load product details', error));
   }, []);
 
-  const navigate = useNavigate();
+
 
   product.isNew = product.new;
 
@@ -50,7 +56,7 @@ function Product() {
     others,
   } = product;
 
-  const goBack = () => navigate(-1);
+
 
   const productInfoChild = (
     <>
@@ -65,13 +71,20 @@ function Product() {
 
   return (
     <div className="container">
-      <button
-        type="button"
-        className="product-link-back product__link-back"
-        onClick={goBack}
-      >
-        Go Back
-      </button>
+      <Spacer space={{
+        mobile: 16,
+        tablet: 32,
+        desktop: 80,
+      }}/>
+
+      <Spacer space={{
+        mobile: 24,
+        tablet: 24,
+        desktop: 56,
+      }}>
+        <GoBack />
+      </Spacer>
+      
 
       <Spacer space={space}>
         {image && (
