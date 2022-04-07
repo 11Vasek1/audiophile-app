@@ -1,12 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../UI/Button';
-import { getDevice } from '../../utils';
+import useWindowSize from '../../Hooks/UseWindowSize';
 
 import '../../scss/App.scss';
 import './Item.scss';
 
 export default function Item(props) {
+  const size = useWindowSize();
+  function getDevice() {
+    if (size.width <= 768) {
+      return 'mobile';
+    } else {
+      return 'desktop';
+    }
+  }
   const { details } = props;
   const imageSrc = details.image[getDevice()];
   return (
