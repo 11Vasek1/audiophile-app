@@ -9,26 +9,32 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addProduct: (state, action) => {
-      const existingProduct = cart.find(
+      const existingProduct = state.cart.find(
         (product) => product.id === action.payload.id
       );
       if (existingProduct) {
-        existingProduct.quantity++;
+        existingProduct.quantity += action.payload.quantity;
       } else {
-        state.cart.push({ ...action.payload, quantity: 1 });
+        state.cart.push({
+          ...action.payload,
+          quantity: action.payload.quantity,
+        });
       }
     },
     removeProduct: (state, action) => {
-      const index = cart.findIndex(
+      const index = state.cart.findIndex(
         (product) => product.id === action.payload.id
       );
       state.cart.splice(index, 1);
     },
+    removeAllProduct: (state) => {
+      state.cart.length = 0;
+    },
   },
 });
 
-const { addProduct, removeProduct } = cartSlice.actions;
+const { addProduct, removeProduct, removeAllProduct } = cartSlice.actions;
 
-export { addProduct, removeProduct };
+export { addProduct, removeProduct, removeAllProduct };
 
 export default cartSlice.reducer;

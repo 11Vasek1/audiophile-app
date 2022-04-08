@@ -1,5 +1,6 @@
 import React from 'react';
-import { getDevice } from '../../utils';
+import { getDeviceForImage } from '../../utils';
+
 import './ProductPhotos.scss';
 
 function getArray(obj) {
@@ -7,7 +8,7 @@ function getArray(obj) {
 }
 
 function ProductPhotos({ gallery }) {
-  const device = getDevice();
+  const device = getDeviceForImage();
 
   const photos = getArray(gallery)
     .map((photoObj) => photoObj[device])
