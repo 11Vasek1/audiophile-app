@@ -35,29 +35,28 @@ function getTotalElements(summary) {
       </div>
     </>
   )
-    
 }
 
-export default function Cart({summary = false}) {
-  const title = summary ? "summary" : `cart (3)`;
-  const button = summary ? "CONTINUE & PAY" : `checkout`;
-  const total = getTotalElements(summary)
 
-  return <div className='cart'>
-    <div className="cart__head">
-      <p className="h6">{title}</p>
-      (summary && <p className='cart__remove'>Remove all</p>)
-    </div>
+export default function Cart(props) {
+  return (
+    <div className="cart">
+      <div className="cart__head">
+        <p className="h6">cart (3)</p>
+        <p className="cart__remove">Remove all</p>
+      </div>
 
-    <div className="cart__content">
-      <CartItem summary={summary} />
-      <CartItem summary={summary} />
-      <CartItem summary={summary} />
-    </div>
-    <div className="cart__total-box">
-      {total}
-    </div>
+      <div className="cart__content">
+        <CartItem />
+        <CartItem />
+        <CartItem />
+      </div>
+      <div className="cart__total">
+        <p>TOTAL</p>
+        <p className="h6">$ 5,396</p>
+      </div>
 
-    <Button children={button} className="cart__checkout"/>
-  </div>;
+      <Button children="checkout" className="cart__checkout" />
+    </div>
+  );
 }
