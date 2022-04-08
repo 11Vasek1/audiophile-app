@@ -3,12 +3,12 @@ import Navbar from './Navbar/Navbar';
 import Footer from './Footer/Footer';
 
 import './../scss/App.scss';
-export default function Layout() {
+export default function Layout({ isModalOpen, setModalOpen }) {
   return (
     <>
       <div className="wrapper">
         <div className="header">
-          <Navbar />
+          <Navbar setModalOpen={setModalOpen} isModalOpen={isModalOpen} />
         </div>
         <div className="main">
           <Outlet />

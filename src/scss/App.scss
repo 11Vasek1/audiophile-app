@@ -138,13 +138,15 @@ body {
 
 .button_arrow {
   @extend %btn;
-  padding: 0;
+  padding: 0 !important;
   color: $default;
   opacity: 0.5;
   box-shadow: none;
-  background-color: transparent;
+  background-color: transparent !important;
   border: none;
   position: relative;
+  box-shadow: none !important;
+
   &::after {
     content: '';
     position: absolute;

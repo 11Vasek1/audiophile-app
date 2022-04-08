@@ -25,3 +25,8 @@ export function getDeviceForImage() {
     return 'desktop';
   }
 }
+
+export function fixProductName(name) {
+  const copiedName = name.split(' ');
+  return copiedName[0];
+}

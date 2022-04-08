@@ -105,3 +105,20 @@
     }
   }
 }
+
+.cart {
+  margin-right: 7px;
+  position: relative;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  &__count {
+    color: #d87d4a;
+    position: absolute;
+    font-size: 10px;
+    top: -11px;
+    right: -10px;
+    width: 10px;
+    height: 10px;
+  }
+}

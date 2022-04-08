@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-export default function useProductCounter() {
-  const [count, setCount] = useState(1);
+export default function useProductCounter(initialCount) {
+  const [count, setCount] = useState(initialCount);
 
   function increment() {
     setCount((prevCount) => prevCount + 1);

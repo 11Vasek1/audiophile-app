@@ -4,14 +4,11 @@ import '../../scss/App.scss';
 
 export default function Button(props) {
   const { outline, arrow, className, children, ...rest } = props;
-  const classes = clsx(
-    {
-      button_orange: !outline,
-      button_white: outline,
-      button_arrow: arrow,
-    },
-    className
-  );
+  const classes = clsx(className, {
+    button_arrow: arrow,
+    button_orange: !outline && !arrow,
+    button_white: outline,
+  });
   return (
     <button className={classes} {...rest}>
       {children}

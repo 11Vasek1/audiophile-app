@@ -18,7 +18,7 @@ function ProductInfo({ name, image, isNew, description, content, isReverse }) {
             NEW PRODUCT
           </p>
         )}
-        <h2 className="h2 card-info-content__title">{name}</h2>
+        <h2 className="card-info-content__title">{name}</h2>
         <p>{description}</p>
         {content}
       </div>
