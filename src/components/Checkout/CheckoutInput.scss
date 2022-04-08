@@ -1,26 +1,26 @@
 @import '../../scss/media.scss';
 
-.checkout-input{
-    &__title{
-        margin-bottom: 9px;
-    }
+.checkout-input {
+  &__title {
+    margin-bottom: 9px;
+  }
 
-    &--doubled{
-        grid-column: 1/3;
+  &--doubled {
+    grid-column: 1/3;
 
-        @include media-mobile{
-            grid-column: auto;
-        }
+    @include media-mobile {
+      grid-column: auto;
     }
+  }
 }
 
-.checkout-input-title{
-    font-family: 'Manrope';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 16px;
-    letter-spacing: -0.214286px;
-    
-    color: #000000;
+.checkout-input-title {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.214286px;
+
+  color: #000000;
 }

@@ -52,22 +52,20 @@ export default function Cart(props) {
   }
 
   return (
-    <Modal isModalOpen={isModalOpen} setModalOpen={setModalOpen}>
-      <div className="cart">
-        <div className="cart__head">
-          <p className="h6">{title}</p>
-          {!summary || (cart.length === 0 && <p className="cart__remove">Remove all</p>)}
-        </div>
-        {cart.length === 0 && ( <p className="cart__no-item">You have not added any product to your cart yet.</p>)}
-        {cart.length > 0 && (
-          <>
-            <div className="cart__inner">{cart.map((product) => ( <CartItem key={product.id} product={product} summary={summary}/>))}</div>
-            <div className="cart__total-box">{total}</div>
-            <Button className="cart__checkout">{button}</Button>
-          </>
-        )}
+    <div className="cart">
+      <div className="cart__head">
+        <p className="h6">{title}</p>
+        {!summary || (cart.length === 0 && <p className="cart__remove">Remove all</p>)}
       </div>
-    </Modal>
+      {cart.length === 0 && ( <p className="cart__no-item">You have not added any product to your cart yet.</p>)}
+      {cart.length > 0 && (
+        <>
+          <div className="cart__inner">{cart.map((product) => ( <CartItem key={product.id} product={product} summary={summary}/>))}</div>
+          <div className="cart__total-box">{total}</div>
+          <Button className="cart__checkout">{button}</Button>
+        </>
+      )}
+    </div>
   )
 }
 
