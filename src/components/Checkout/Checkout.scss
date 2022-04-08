@@ -1,0 +1,55 @@
+@import '../../scss/vars';
+
+.checkout{
+    background-color: $bg;
+    padding: 10px;
+
+    &__h3{
+        margin-bottom: 40px;
+    }
+}
+
+.checkout-content{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 30px;
+
+    &__left{
+        grid-column: 1/3;
+    }
+
+    &__right{
+        grid-column: 3/4;
+    }
+}
+
+.checkout-form{
+    background: $title;
+    border-radius: 8px;
+}
+
+.checkout-form{
+    padding: 54px 48px 48px 48px;
+}
+
+.checkout-steps{
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 60px;
+}
+
+.checkout-step{
+
+    &__title{
+        margin-bottom: 16px;
+    }
+
+    &__content{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 16px;
+        row-gap: 24px;
+    }
+
+
+}

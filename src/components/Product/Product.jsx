@@ -16,6 +16,7 @@ import {
 } from '..';
 
 import './Product.scss';
+import GoBack from '../GoBack/GoBack';
 
 const space = {
   mobile: 88,
@@ -40,7 +41,7 @@ function Product() {
       .catch((error) => console.log('Could not load product details', error));
   }, []);
 
-  const navigate = useNavigate();
+
 
   const onProductAdd = (item) => {
     dispatch(addProduct(item));
@@ -60,7 +61,7 @@ function Product() {
     others,
   } = product;
 
-  const goBack = () => navigate(-1);
+
 
   const productInfoChild = (
     <>
@@ -85,13 +86,20 @@ function Product() {
 
   return (
     <div className="container">
-      <button
-        type="button"
-        className="product-link-back product__link-back"
-        onClick={goBack}
-      >
-        Go Back
-      </button>
+      <Spacer space={{
+        mobile: 16,
+        tablet: 32,
+        desktop: 80,
+      }}/>
+
+      <Spacer space={{
+        mobile: 24,
+        tablet: 24,
+        desktop: 56,
+      }}>
+        <GoBack />
+      </Spacer>
+      
 
       <Spacer space={space}>
         {image && (
