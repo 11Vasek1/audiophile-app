@@ -35,7 +35,6 @@ function getTotalElements(summary) {
       </div>
     </>
   )
-    
 }
 
 export default function Cart({summary = false}) {
@@ -46,7 +45,7 @@ export default function Cart({summary = false}) {
   return <div className='cart'>
     <div className="cart__head">
       <p className="h6">{title}</p>
-      (summary && <p className='cart__remove'>Remove all</p>)
+      {summary && <p className='cart__remove'>Remove all</p>}
     </div>
 
     <div className="cart__content">
