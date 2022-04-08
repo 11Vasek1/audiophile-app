@@ -8,9 +8,11 @@ import Loader from '../UI/Loader/Loader';
 
 import './Items.scss';
 
+const URL = 'http://localhost:3002/';
+
 export default function Items() {
   const [items, setItems] = useState([]);
-  const { get, loading } = useFetch('http://localhost:3001/');
+  const { get, loading } = useFetch(URL);
   const { category } = useParams();
 
   useEffect(() => {

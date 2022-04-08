@@ -1,93 +1,105 @@
 @import '../../scss/media.scss';
 
-.card-info{
+.card-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+
+  &--reverse {
+    flex-direction: row-reverse;
+  }
+
+  @include media-tablet {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 10px;
+
+    &__image {
+      grid-column: 1/6;
+    }
+
+    &__content {
+      grid-column: 7/13;
+    }
+  }
+
+  @include media-mobile {
+    display: block;
+    &__image {
+      margin-bottom: 32px;
+    }
+  }
+}
+
+.card-info-image {
+  width: 540px;
+  height: 560px;
+  object-fit: cover;
+
+  border-radius: 8px;
+
+  @include media-mobile {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.card-info-content {
+  width: 445px;
+
+  &__title {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 44px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #000;
+    margin-top: 16px;
+    margin-bottom: 32px;
+    @include media-tablet {
+      font-size: 28px;
+      line-height: 32px;
+      letter-spacing: 1px;
+    }
+    @include media-mobile {
+      font-size: 28px;
+      line-height: 38px;
+    }
+  }
+
+  @include media-tablet {
+    width: auto;
+  }
+
+  @include media-mobile {
+    display: block;
+
+    &__title {
+      margin-top: 40px;
+    }
+
+    &__subtitle + &__title {
+      margin-top: 24px;
+    }
+  }
+}
+
+.product-info {
+  &__store {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
+    gap: 30px;
+  }
+  &__price {
+    margin-top: 32px;
+    margin-bottom: 47px;
 
-    &--reverse{
-        flex-direction:row-reverse;
+    @include media-tablet {
+      margin-bottom: 32px;
     }
 
-    @include media-tablet{
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        column-gap: 10px;
-
-        &__image{
-            grid-column: 1/6;
-        }
-
-        &__content{
-            grid-column: 7/13;
-        }
+    @include media-mobile {
+      margin-top: 24px;
     }
-
-    @include media-mobile{
-        display: block;
-        &__image{
-            margin-bottom: 32px;
-        }
-    }
+  }
 }
-
-.card-info-image{
-    width: 540px;
-    height: 560px;
-    object-fit: cover;
-
-    border-radius: 8px;
-
-    @include media-mobile{
-        width: 100%;
-        height: auto;
-    }
-}
-
-.card-info-content{
-    width: 445px;
-
-    &__title{
-        margin-top: 16px;
-        margin-bottom: 32px;
-    }
-
-    @include media-tablet{
-        width: auto;
-    }
-
-    @include media-mobile{
-        display: block;
-
-        &__title{
-            margin-top: 40px;
-        }
-
-        &__subtitle+&__title{
-            margin-top: 24px;
-        }
-    }    
-}
-
-.product-info{
-    &__store{
-        display: flex;
-        gap: 30px;
-    }
-    &__price{
-        margin-top: 32px;
-        margin-bottom: 47px;
-
-        @include media-tablet{
-            margin-bottom: 32px;
-        }
-
-        @include media-mobile{
-            margin-top: 24px;
-        }
-    }
-}
-
-
-

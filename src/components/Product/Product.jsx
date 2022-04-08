@@ -1,36 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addProduct } from '../../store/cartSlice';
 import useFetch from '../../Hooks/useFetch';
-import ProductFeatures from './ProductFeatures';
-import ProductPhotos from './ProductPhotos';
+import useProductCounter from '../../Hooks/useProductCounter';
+import { ProductFeatures, ProductPhotos, ProductLike } from '.';
 import ProductInfo from '../ProductInfo/ProductInfo';
-import ProductLike from './ProductLike';
-import Categories from '../Categories/Categories';
-import About from '../About/About';
-import Input from '../UI/Input';
-import Button from '../UI/Button';
-import Spacer from '../Spacer';
-import Cart from '../Cart/Cart';
+import GoBack from '../GoBack/GoBack';
+
+import { Categories, About, InputNumber, Button, Spacer } from '..';
 
 import './Product.scss';
-import InputNumber from '../UI/inputNumber';
-import GoBack from '../GoBack/GoBack';
 
 const space = {
   mobile: 88,
   tablet: 120,
   desktop: 160,
 };
-
-// const space
-
-// margin-top: 79px;
-// margin-bottom: 56px;
+const URL = 'http://localhost:3002/';
 
 function Product() {
   const [product, setProduct] = useState({});
-  const { get } = useFetch('http://localhost:3002/');
+  const { count, increment, decrement } = useProductCounter(1);
+  const { get } = useFetch(URL);
   const params = useParams();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     get(`items/${params.id}`)
@@ -40,7 +34,9 @@ function Product() {
       .catch((error) => console.log('Could not load product details', error));
   }, []);
 
-
+  const onProductAdd = (item) => {
+    dispatch(addProduct(item));
+  };
 
   product.isNew = product.new;
 
@@ -56,35 +52,43 @@ function Product() {
     others,
   } = product;
 
-
-
   const productInfoChild = (
     <>
-      <p className="h6 product-info__price">$ {price}</p>
-
+      <p className="h6 product-info__price">${price}</p>
       <div className="product-info__store">
-        <InputNumber />
-        <Button>ADD TO CART</Button>
+        <InputNumber
+          product={product}
+          setProduct={setProduct}
+          count={count}
+          increment={increment}
+          decrement={decrement}
+        />
+        <Button onClick={() => onProductAdd({ ...product, quantity: count })}>
+          ADD TO CART
+        </Button>
       </div>
     </>
   );
 
   return (
     <div className="container">
-      <Spacer space={{
-        mobile: 16,
-        tablet: 32,
-        desktop: 80,
-      }}/>
+      <Spacer
+        space={{
+          mobile: 16,
+          tablet: 32,
+          desktop: 80,
+        }}
+      />
 
-      <Spacer space={{
-        mobile: 24,
-        tablet: 24,
-        desktop: 56,
-      }}>
+      <Spacer
+        space={{
+          mobile: 24,
+          tablet: 24,
+          desktop: 56,
+        }}
+      >
         <GoBack />
       </Spacer>
-      
 
       <Spacer space={space}>
         {image && (
@@ -98,7 +102,7 @@ function Product() {
           />
         )}
       </Spacer>
-      
+
       <Spacer space={space}>
         <ProductFeatures features={features} includes={includes} />
       </Spacer>
@@ -106,18 +110,13 @@ function Product() {
       <Spacer space={space}>
         {gallery && <ProductPhotos gallery={gallery} />}
       </Spacer>
-      <Spacer space={space}>
-        {others && <ProductLike others={others} />}    
-      </Spacer>
+      <Spacer space={space}>{others && <ProductLike others={others} />}</Spacer>
       <Spacer space={space}>
         <Categories />
       </Spacer>
-
       <Spacer space={space}>
         <About />
       </Spacer>
-
-      <Cart />
     </div>
   );
 }

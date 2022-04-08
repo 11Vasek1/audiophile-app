@@ -7,11 +7,11 @@ function ProductFeatures({ features, includes }) {
   return (
     <div className={className}>
       <div className="product-features__features">
-        <h3 className="h3 product-features__title">FEATURES</h3>
+        <h3 className="product-features__title">FEATURES</h3>
         <p>{features}</p>
       </div>
       <div className="product-features__box">
-        <h3 className="h3 product-features__title">in the box</h3>
+        <h3 className="product-features__title">in the box</h3>
         <div className="product-features-list">
           {includes &&
             includes.map((item, index) => (

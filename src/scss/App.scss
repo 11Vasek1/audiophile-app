@@ -138,13 +138,15 @@ body {
 
 .button_arrow {
   @extend %btn;
-  padding: 0;
+  padding: 0 !important;
   color: $default;
   opacity: 0.5;
   box-shadow: none;
-  background-color: transparent;
+  background-color: transparent !important;
   border: none;
   position: relative;
+  box-shadow: none !important;
+
   &::after {
     content: '';
     position: absolute;
@@ -229,22 +231,21 @@ body {
   font-size: 13px;
   line-height: 18px;
   text-transform: uppercase;
-  &__field {
-    width: 114px;
-    border: none;
-    transform: translateY(1px);
-  }
+  display: flex;
+  align-items: center;
+  width: 114px;
   &__input {
     width: 100%;
     height: 50px;
-    outline-color: $bg;
     color: $default;
     text-align: center;
     background-color: $bg;
-    border: none;
+    padding-top: 15px;
+    border-radius: 3px;
   }
   &__spin {
     position: absolute;
+    border: none;
     cursor: pointer;
     width: 12px;
     height: 12px;

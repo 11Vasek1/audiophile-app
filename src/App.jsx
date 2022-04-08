@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Items, Cart, Product, Layout, ScrollToTop } from './components';
 import Checkout from './components/Checkout/Checkout';
@@ -7,22 +7,30 @@ import { Home, NotFoundPage } from './pages';
 import './scss/App.scss';
 
 function App() {
+  const [isModalOpen, setModalOpen] = useState(false);
   return (
     <>
       <BrowserRouter>
         <ScrollToTop>
           <Routes>
-            <Route path="/" element={<Layout />}>
+            <Route
+              path="/"
+              element={
+                <Layout isModalOpen={isModalOpen} setModalOpen={setModalOpen} />
+              }
+            >
               <Route index element={<Home />} />
               <Route path="items/:category" element={<Items />} />
               <Route path="items/:category/:id" element={<Product />} />
-              <Route path="cart" element={<Cart />} />
               <Route path="checkout" element={<Checkout />} />
               <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
         </ScrollToTop>
       </BrowserRouter>
+      {isModalOpen && (
+        <Cart isModalOpen={isModalOpen} setModalOpen={setModalOpen} />
+      )}
     </>
   );
 }
