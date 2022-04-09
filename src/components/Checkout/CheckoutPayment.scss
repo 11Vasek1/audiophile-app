@@ -1,0 +1,15 @@
+@import '../../scss/media.scss';
+
+.payment {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 30px;
+
+  @include media-mobile {
+    grid-template-columns: 1fr;
+  }
+
+  &__title {
+    margin-bottom: 16px;
+  }
+}

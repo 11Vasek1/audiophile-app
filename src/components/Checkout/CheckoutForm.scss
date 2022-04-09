@@ -1,0 +1,12 @@
+@import '../../scss/vars';
+@import '../../scss/media.scss';
+
+.checkout-form {
+  background: $title;
+  border-radius: 8px;
+  padding: 54px 48px 48px 48px;
+
+  @include media-tablet {
+    padding: 32px;
+  }
+}

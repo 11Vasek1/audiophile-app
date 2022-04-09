@@ -6,15 +6,27 @@ import CartItem from './CartItem';
 import Modal from '../Modal/Modal';
 
 import './Cart.scss';
+import { Link } from 'react-router-dom';
 
-function Cart(props) {
+function createButton(summary) {
+  if (summary) {
+    return <Button className="cart__checkout">CONTINUE & PAY</Button>;
+  }
+  return (
+    <Link to="checkout">
+      <Button className="cart__checkout">checkout</Button>
+    </Link>
+  );
+}
+
+export default function Cart(props) {
   const { summary, isModalOpen, setModalOpen } = props;
   const cart = useSelector((state) => state.cart);
   const cartCount = useSelector(cartCountSelector);
   const totalPrice = useSelector(cartValueSelector);
 
   const title = summary ? 'summary' : `cart(${cartCount})`;
-  const button = summary ? 'CONTINUE & PAY' : 'checkout';
+  const button = createButton(summary);
   const total = getTotalElements(summary);
 
   function getTotalElements() {
@@ -22,10 +34,7 @@ function Cart(props) {
       return (
         <div className="cart-total">
           <p>TOTAL</p>
-          <p className="h6">
-            $
-            {totalPrice}
-          </p>
+          <p className="h6">${totalPrice}</p>
         </div>
       );
     }
@@ -52,36 +61,57 @@ function Cart(props) {
   }
 
   return (
-    <Modal isModalOpen={isModalOpen} setModalOpen={setModalOpen}>
-      <div className="cart">
-        <div className="cart__head">
-          <p className="h6">{title}</p>
-          {!summary
-            || (cart.length === 0 && <p className="cart__remove">Remove all</p>)}
-        </div>
-        {cart.length === 0 && (
-          <p className="cart__no-item">
-            You have not added any product to your cart yet.
-          </p>
-        )}
-        {cart.length > 0 && (
-          <>
-            <div className="cart__inner">
-              {cart.map((product) => (
-                <CartItem
-                  key={product.id}
-                  product={product}
-                  summary={summary}
-                />
-              ))}
-            </div>
-            <div className="cart__total-box">{total}</div>
-            <Button className="cart__checkout">{button}</Button>
-          </>
-        )}
+    <div className="cart">
+      <div className="cart__head">
+        <p className="h6">{title}</p>
+        {!summary ||
+          (cart.length === 0 && <p className="cart__remove">Remove all</p>)}
       </div>
-    </Modal>
+      {cart.length === 0 && (
+        <p className="cart__no-item">
+          You have not added any product to your cart yet.
+        </p>
+      )}
+      {cart.length > 0 && (
+        <>
+          <div className="cart__inner">
+            {cart.map((product) => (
+              <CartItem key={product.id} product={product} summary={summary} />
+            ))}
+          </div>
+          <div className="cart__total-box">{total}</div>
+          {button}
+        </>
+      )}
+    </div>
   );
 }
 
-export default Cart;
+// export default function Cart({summary = false}) {
+//   const { summary, isModalOpen, setModalOpen } = props;
+//   const cart = useSelector((state) => state.cart);
+//   const cartCount = useSelector(cartCountSelector);
+//   const totalPrice = useSelector(cartValueSelector);
+
+//   const title = summary ? 'summary' : `cart(${cartCount})`;
+//   const button = summary ? 'CONTINUE & PAY' : 'checkout';
+//   const total = getTotalElements(summary);
+
+//   return <div className='cart'>
+//     <div className="cart__head">
+//       <p className="h6">{title}</p>
+//       {summary && <p className='cart__remove'>Remove all</p>}
+//     </div>
+
+//     <div className="cart__content">
+//       <CartItem summary={summary} />
+//       <CartItem summary={summary} />
+//       <CartItem summary={summary} />
+//     </div>
+//     <div className="cart__total-box">
+//       {total}
+//     </div>
+
+//     <Button children={button} className="cart__checkout"/>
+//   </div>;
+// }
