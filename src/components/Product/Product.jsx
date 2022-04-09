@@ -35,10 +35,6 @@ function Product() {
       .catch((error) => console.log('Could not load product details', error));
   }, []);
 
-  const onProductAdd = (item) => {
-    dispatch(addProduct(item));
-  };
-
   product.isNew = product.new;
 
   const {
@@ -53,13 +49,15 @@ function Product() {
     others,
   } = product;
 
+  const onProductAdd = (item) => {
+    dispatch(addProduct(item));
+  };
+
   const productInfoChild = (
     <>
       <p className="h6 product-info__price">{formatPrice(price)}</p>
       <div className="product-info__store">
         <InputNumber
-          product={product}
-          setProduct={setProduct}
           count={count}
           increment={increment}
           decrement={decrement}

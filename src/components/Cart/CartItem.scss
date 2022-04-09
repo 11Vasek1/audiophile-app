@@ -1,20 +1,45 @@
 @import '../../scss/vars';
 
-.cart-item{
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &:hover {
+    .cart-item__delete {
+      display: inline-block;
+    }
+  }
+
+  &__product {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+  }
 
-    &__product{
-        display: flex;
-        align-items: center;
-    }
+  &__image {
+    width: 64px;
+    height: 64px;
+    margin-right: 16px;
+    border-radius: 8px;
+  }
+  &__box {
+    position: relative;
+  }
 
-    &__image{
-        width: 64px;
-        height: 64px;
-        margin-right: 16px;
-        border-radius: 8px;
+  &__delete {
+    display: none;
+    position: absolute;
+    background-size: cover;
+    width: 23px;
+    height: 23px;
+    top: 13px;
+    right: -24px;
+    font-size: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    &:hover {
+      filter: invert(24%) sepia(91%) saturate(1466%) hue-rotate(357deg)
+        brightness(108%) contrast(100%);
     }
+  }
 }
-
