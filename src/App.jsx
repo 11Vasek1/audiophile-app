@@ -28,14 +28,14 @@ function App() {
             </Route>
           </Routes>
         </ScrollToTop>
-      </BrowserRouter>
-      {isModalOpen && (
-        // <Cart isModalOpen={isModalOpen} setModalOpen={setModalOpen} />
+        {isModalOpen && (
+          // <Cart isModalOpen={isModalOpen} setModalOpen={setModalOpen} />
 
-        <Modal isModalOpen={isModalOpen} setModalOpen={setModalOpen}>
-          <Cart isModalOpen={isModalOpen} setModalOpen={setModalOpen} />  
-        </Modal>
-      )}
+          <Modal isModalOpen={isModalOpen} setModalOpen={setModalOpen}>
+            <Cart isModalOpen={isModalOpen} setModalOpen={setModalOpen} />
+          </Modal>
+        )}
+      </BrowserRouter>
     </>
   );
 }

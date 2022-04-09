@@ -34,40 +34,10 @@
 
   &__checkout {
     width: 100%;
-    padding: 32px;
-    border-radius: 8px;
+  }
 
-    &__head {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    &__remove {
-      text-decoration: underline;
-      cursor: pointer;
-    }
-
-    &__content {
-      margin: 32px 0px;
-      display: grid;
-      row-gap: 24px;
-    }
-
-    &__total-box {
-      margin-bottom: 24px;
-    }
-
-    &__checkout {
-      width: 100%;
-    }
-
-    &__total {
-      margin-bottom: 8px;
-    }
-
-    &__big-total {
-      margin-top: 24px;
-    }
+  &__checkout {
+    width: 100%;
   }
 
   &__total {
