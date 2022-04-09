@@ -11,6 +11,7 @@ import GoBack from '../GoBack/GoBack';
 import { Categories, About, InputNumber, Button, Spacer } from '..';
 
 import './Product.scss';
+import { formatPrice } from '../../utils';
 
 const space = {
   mobile: 88,
@@ -54,7 +55,7 @@ function Product() {
 
   const productInfoChild = (
     <>
-      <p className="h6 product-info__price">${price}</p>
+      <p className="h6 product-info__price">{formatPrice(price)}</p>
       <div className="product-info__store">
         <InputNumber
           product={product}

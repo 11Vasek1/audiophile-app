@@ -30,3 +30,8 @@ export function fixProductName(name) {
   const copiedName = name.split(' ');
   return copiedName[0];
 }
+
+export function formatPrice(price) {
+  const string = (price + '').replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1,');
+  return `$ ${string}`;
+}
