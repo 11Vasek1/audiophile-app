@@ -1,9 +1,13 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { cartCountSelector, cartValueSelector } from '../../store/cartSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  cartCountSelector,
+  cartValueSelector,
+  removeAllProduct,
+  removeProduct,
+} from '../../store/cartSlice';
 import Button from '../UI/Button';
 import CartItem from './CartItem';
-import Modal from '../Modal/Modal';
 
 import './Cart.scss';
 import { Link } from 'react-router-dom';
@@ -20,8 +24,9 @@ function createButton(summary) {
 }
 
 export default function Cart(props) {
-  const { summary, isModalOpen, setModalOpen } = props;
+  const { summary } = props;
   const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
   const cartCount = useSelector(cartCountSelector);
   const totalPrice = useSelector(cartValueSelector);
 
@@ -64,8 +69,14 @@ export default function Cart(props) {
     <div className="cart">
       <div className="cart__head">
         <p className="h6">{title}</p>
-        {!summary ||
-          (cart.length === 0 && <p className="cart__remove">Remove all</p>)}
+        {!summary && cart.length > 0 && (
+          <button
+            className="cart__remove"
+            onClick={() => dispatch(removeAllProduct(cart))}
+          >
+            Remove all
+          </button>
+        )}
       </div>
       {cart.length === 0 && (
         <p className="cart__no-item">
@@ -76,7 +87,12 @@ export default function Cart(props) {
         <>
           <div className="cart__inner">
             {cart.map((product) => (
-              <CartItem key={product.id} product={product} summary={summary} />
+              <CartItem
+                key={product.id}
+                product={product}
+                summary={summary}
+                removeProduct={removeProduct}
+              />
             ))}
           </div>
           <div className="cart__total-box">{total}</div>
@@ -86,32 +102,3 @@ export default function Cart(props) {
     </div>
   );
 }
-
-// export default function Cart({summary = false}) {
-//   const { summary, isModalOpen, setModalOpen } = props;
-//   const cart = useSelector((state) => state.cart);
-//   const cartCount = useSelector(cartCountSelector);
-//   const totalPrice = useSelector(cartValueSelector);
-
-//   const title = summary ? 'summary' : `cart(${cartCount})`;
-//   const button = summary ? 'CONTINUE & PAY' : 'checkout';
-//   const total = getTotalElements(summary);
-
-//   return <div className='cart'>
-//     <div className="cart__head">
-//       <p className="h6">{title}</p>
-//       {summary && <p className='cart__remove'>Remove all</p>}
-//     </div>
-
-//     <div className="cart__content">
-//       <CartItem summary={summary} />
-//       <CartItem summary={summary} />
-//       <CartItem summary={summary} />
-//     </div>
-//     <div className="cart__total-box">
-//       {total}
-//     </div>
-
-//     <Button children={button} className="cart__checkout"/>
-//   </div>;
-// }
