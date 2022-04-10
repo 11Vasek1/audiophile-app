@@ -44,9 +44,6 @@ function Product() {
     dispatch(addProduct(item));
   };
 
-  // debugger;
-  console.log(product);
-
   const {
     name,
     image,
