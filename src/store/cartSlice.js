@@ -36,14 +36,17 @@ const cartSlice = createSlice({
 const { addProduct, removeProduct, removeAllProduct } = cartSlice.actions;
 
 const cartValueSelector = (state) => {
-  return state.cart.reduce(
+  return state.cart.cart.reduce(
     (total, product) => total + product.price * product.quantity,
     0
   );
 };
 
 const cartCountSelector = (state) => {
-  return state.cart.reduce((total, product) => total + product.quantity, 0);
+  return state.cart.cart.reduce(
+    (total, product) => total + product.quantity,
+    0
+  );
 };
 
 export {

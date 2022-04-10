@@ -20,8 +20,8 @@ function createButton(summary) {
 }
 
 export default function Cart(props) {
-  const { summary, isModalOpen, setModalOpen } = props;
-  const cart = useSelector((state) => state.cart);
+  const { summary } = props;
+  const cart = useSelector((state) => state.cart.cart);
   const cartCount = useSelector(cartCountSelector);
   const totalPrice = useSelector(cartValueSelector);
 

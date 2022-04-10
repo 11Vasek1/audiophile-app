@@ -17,7 +17,7 @@ export default function NewProduct(props) {
           <h4 className={classes}>NEW PRODUCT</h4>
           <h1 className={clsx('h1', styles.title)}>{model}</h1>
           <p className={styles.newProduct__about_describe}>{description}</p>
-          <Link to="/items/headphones/4">
+          <Link to="/items/headphones/xx99-mark-two-headphones">
             <Button className={styles.newProduct__btn}>See Product</Button>
           </Link>
         </div>

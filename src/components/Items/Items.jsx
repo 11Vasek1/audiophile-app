@@ -7,19 +7,37 @@ import useFetch from '../../Hooks/useFetch';
 import Loader from '../UI/Loader/Loader';
 
 import './Items.scss';
+import { useSelector } from 'react-redux';
 
 const URL = 'http://localhost:3002/';
 
 export default function Items() {
   const [items, setItems] = useState([]);
-  const { get, loading } = useFetch(URL);
+  // const { get, loading } = useFetch(URL);
   const { category } = useParams();
 
+  // useEffect(() => {
+  //   get('items')
+  //     .then((data) => setItems(data))
+  //     .catch((error) => console.log('Could not load products', error));
+  // }, []);
+  const products = useSelector((store) => store.products?.products);
+
   useEffect(() => {
-    get('items')
-      .then((data) => setItems(data))
-      .catch((error) => console.log('Could not load products', error));
-  }, []);
+    if (!products.arr) {
+      setItems([]);
+      return;
+    }
+
+    setItems([...products.arr]);
+
+    // const _product = Object.assign({}, products.slug[slug]);
+    // _product.isNew = _product.new;
+
+    // setProduct(_product);
+  }, [products, category]);
+
+  const loading = false;
 
   return (
     <>
