@@ -20,6 +20,10 @@
   &__remove {
     text-decoration: underline;
     cursor: pointer;
+    border: none;
+    background-color: transparent;
+    color: #00000080;
+    line-height: 25px;
   }
 
   &__inner {

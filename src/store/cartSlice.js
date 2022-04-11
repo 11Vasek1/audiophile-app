@@ -12,7 +12,7 @@ const cartSlice = createSlice({
       const existingProduct = state.cart.find(
         (product) => product.id === action.payload.id
       );
-      if (existingProduct) {
+      if (existingProduct && action.payload.quantity) {
         existingProduct.quantity += action.payload.quantity;
       } else {
         state.cart.push({
@@ -21,11 +21,23 @@ const cartSlice = createSlice({
         });
       }
     },
+    addOneProduct: (state, action) => {
+      const existingProduct = state.cart.find(
+        (product) => product.id === action.payload.id
+      );
+      existingProduct.quantity++;
+    },
     removeProduct: (state, action) => {
       const index = state.cart.findIndex(
         (product) => product.id === action.payload.id
       );
       state.cart.splice(index, 1);
+    },
+    removeOneProduct: (state, action) => {
+      const existingProduct = state.cart.find(
+        (product) => product.id === action.payload.id
+      );
+      existingProduct.quantity--;
     },
     removeAllProduct: (state) => {
       state.cart.length = 0;
@@ -33,7 +45,13 @@ const cartSlice = createSlice({
   },
 });
 
-const { addProduct, removeProduct, removeAllProduct } = cartSlice.actions;
+const {
+  addProduct,
+  addOneProduct,
+  removeProduct,
+  removeOneProduct,
+  removeAllProduct,
+} = cartSlice.actions;
 
 const cartValueSelector = (state) => {
   return state.cart.cart.reduce(
@@ -51,7 +69,9 @@ const cartCountSelector = (state) => {
 
 export {
   addProduct,
+  addOneProduct,
   removeProduct,
+  removeOneProduct,
   removeAllProduct,
   cartValueSelector,
   cartCountSelector,

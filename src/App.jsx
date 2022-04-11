@@ -45,8 +45,6 @@ function App() {
           </Routes>
         </ScrollToTop>
         {isModalOpen && (
-          // <Cart isModalOpen={isModalOpen} setModalOpen={setModalOpen} />
-
           <Modal isModalOpen={isModalOpen} setModalOpen={setModalOpen}>
             <Cart isModalOpen={isModalOpen} setModalOpen={setModalOpen} />
           </Modal>
