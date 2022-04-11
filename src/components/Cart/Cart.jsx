@@ -25,7 +25,8 @@ function createButton(summary) {
 
 export default function Cart(props) {
   const { summary } = props;
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state) => state.cart.cart);
+//   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const cartCount = useSelector(cartCountSelector);
   const totalPrice = useSelector(cartValueSelector);

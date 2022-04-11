@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../../store/cartSlice';
-import useFetch from '../../Hooks/useFetch';
 import useProductCounter from '../../Hooks/useProductCounter';
 import { ProductFeatures, ProductPhotos, ProductLike } from '.';
 import ProductInfo from '../ProductInfo/ProductInfo';
@@ -12,30 +11,42 @@ import { Categories, About, InputNumber, Button, Spacer } from '..';
 
 import './Product.scss';
 import { formatPrice } from '../../utils';
+import { useSelector } from 'react-redux';
 
 const space = {
   mobile: 88,
   tablet: 120,
   desktop: 160,
 };
-const URL = 'http://localhost:3002/';
 
 function Product() {
   const [product, setProduct] = useState({});
   const { count, increment, decrement } = useProductCounter(1);
-  const { get } = useFetch(URL);
   const params = useParams();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    get(`items/${params.id}`)
-      .then((data) => {
-        setProduct(data);
-      })
-      .catch((error) => console.log('Could not load product details', error));
-  }, []);
+  const slug = params.slug;
+  const products = useSelector((store) => store.products?.products);
 
-  product.isNew = product.new;
+  useEffect(() => {
+    if (!products.slug) {
+      setProduct({});
+      return;
+    }
+
+    const _product = Object.assign({}, products.slug[slug]);
+    _product.isNew = _product.new;
+
+    setProduct(_product);
+  }, [products, slug]);
+
+// <<<<<<< main
+//   const onProductAdd = (item) => {
+//     dispatch(addProduct(item));
+//   };
+// =======
+//   product.isNew = product.new;
+// >>>>>>> main
 
   const {
     name,
