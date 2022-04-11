@@ -1,15 +1,25 @@
 import React from 'react';
-import './GoBack.scss';
 import { useNavigate } from 'react-router-dom';
+import Spacer from '../Spacer';
+
+import './GoBack.scss';
 
 function GoBack() {
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
 
   return (
-    <button type="button" className="go-back-button" onClick={goBack}>
-      Go Back
-    </button>
+    <Spacer
+      space={{
+        mobile: 24,
+        tablet: 24,
+        desktop: 56,
+      }}
+    >
+      <button type="button" className="go-back-button" onClick={goBack}>
+        Go Back
+      </button>
+    </Spacer>
   );
 }
 

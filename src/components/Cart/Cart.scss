@@ -42,6 +42,9 @@
 
   &__checkout {
     width: 100%;
+    &:disabled {
+      background-color: #fbaf85;
+    }
   }
 
   &__total {

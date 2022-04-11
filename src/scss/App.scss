@@ -184,6 +184,23 @@ body {
   }
 }
 
+.input__box {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.input__error {
+  color: #cd2c2c;
+}
+
+.input__span {
+  color: $default;
+  &--error {
+    color: #cd2c2c;
+  }
+}
+
 .payment {
   &__label {
     @extend %input;

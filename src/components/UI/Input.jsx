@@ -3,18 +3,48 @@ import clsx from 'clsx';
 import '../../scss/App.scss';
 
 export default function Input(props) {
-  const { type = 'text', placeholder, ...rest } = props;
+  const {
+    type = 'text',
+    placeholder,
+    label,
+    register,
+    required,
+    errors,
+    ...rest
+  } = props;
   const classes = clsx({
-    input__text: type === 'text',
+    input__text: type !== 'radio' || type !== 'number',
     payment__input: type === 'radio',
     number__input: type === 'number',
   });
   return (
-    <input
-      className={classes}
-      type={type}
-      placeholder={placeholder}
-      {...rest}
-    />
+    <>
+      <div className="input__box">
+        {label && (
+          <label
+            className={clsx('input__span', {
+              'input__span--error': errors?.[label],
+            })}
+          >
+            {label}
+          </label>
+        )}
+        {errors?.[label] && (
+          <span className="input__error">
+            {errors?.[label]?.message || 'Error'}
+          </span>
+        )}
+      </div>
+      <input
+        className={classes}
+        type={type}
+        placeholder={placeholder}
+        {...register(label, {
+          required,
+          minLength: { value: 3, message: 'At least 3 characters' },
+        })}
+        {...rest}
+      />
+    </>
   );
 }
