@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { addProducts } from './store/productsSlice';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Items, Cart, Product, Layout, ScrollToTop } from './components';
 import Checkout from './components/Checkout/Checkout';
@@ -8,7 +9,6 @@ import useFetch from './Hooks/useFetch';
 import { Home, NotFoundPage } from './pages';
 
 import './scss/App.scss';
-import { addProducts } from './store/productsSlice';
 
 const URL = 'http://localhost:3002/';
 

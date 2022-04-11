@@ -40,14 +40,6 @@ function Product() {
     setProduct(_product);
   }, [products, slug]);
 
-// <<<<<<< main
-//   const onProductAdd = (item) => {
-//     dispatch(addProduct(item));
-//   };
-// =======
-//   product.isNew = product.new;
-// >>>>>>> main
-
   const {
     name,
     image,

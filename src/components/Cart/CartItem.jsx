@@ -1,13 +1,14 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { removeProduct } from '../../store/cartSlice';
 import InputNumber from '../UI/InputNumber';
-import { fixProductName } from '../../utils';
+import { fixProductName, formatPrice } from '../../utils';
 import useProductCounter from '../../Hooks/useProductCounter';
 
 import './CartItem.scss';
 
 export default function CartItem(props) {
-  const { summary, product, removeProduct } = props;
+  const { summary, product } = props;
   const { count, increment, decrement } = useProductCounter(product.quantity);
   const dispatch = useDispatch();
   const cartItemRight = summary ? (
@@ -44,7 +45,7 @@ export default function CartItem(props) {
         />
         <div className="cart-item__text">
           <p className="h6 cart-item__title">{fixProductName(product.name)}</p>
-          <p>${product.price}</p>
+          <p>{formatPrice(product.price)}</p>
         </div>
       </div>
       {cartItemRight}

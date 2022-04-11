@@ -28,21 +28,6 @@ const productsSlice = createSlice({
 
 const { addProducts } = productsSlice.actions;
 
-// const cartValueSelector = (state) => {
-//   return state.cart.reduce(
-//     (total, product) => total + product.price * product.quantity,
-//     0
-//   );
-// };
-
-// const cartCountSelector = (state) => {
-//   return state.cart.reduce((total, product) => total + product.quantity, 0);
-// };
-
-export {
-  addProducts,
-  // cartValueSelector,
-  // cartCountSelector,
-};
+export { addProducts };
 
 export default productsSlice.reducer;

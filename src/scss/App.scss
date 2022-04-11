@@ -251,7 +251,6 @@ body {
     height: 12px;
     top: 50%;
     transform: translateY(-50%);
-    opacity: 0.25;
     &::after {
       content: '';
       position: absolute;
@@ -259,7 +258,7 @@ body {
       left: 1px;
       width: 9px;
       height: 1px;
-      background-color: $default;
+      background-color: #ccc;
     }
     &.minus {
       left: 15px;
@@ -274,8 +273,12 @@ body {
         left: 5px;
         width: 1px;
         height: 9px;
-        background-color: $default;
+        background-color: #ccc;
       }
+    }
+    &:hover::after,
+    &:hover::before {
+      background-color: $accent;
     }
   }
 }
