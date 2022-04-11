@@ -1,45 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
   cartCountSelector,
   cartValueSelector,
   removeAllProduct,
-  removeProduct,
 } from '../../store/cartSlice';
 import Button from '../UI/Button';
 import CartItem from './CartItem';
+import { formatPrice } from '../../utils';
 
 import './Cart.scss';
-import { Link } from 'react-router-dom';
-
-function createButton(summary) {
-  if (summary) {
-    return <Button className="cart__checkout">CONTINUE & PAY</Button>;
-  }
-  return (
-    <Link to="checkout">
-      <Button className="cart__checkout">checkout</Button>
-    </Link>
-  );
-}
 
 export default function Cart(props) {
-  const { summary } = props;
-  const cart = useSelector((state) => state.cart);
+  const { summary, setModalOpen, isModalOpen } = props;
+  const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
   const cartCount = useSelector(cartCountSelector);
   const totalPrice = useSelector(cartValueSelector);
 
+  useEffect(() => {
+    if (!isModalOpen) {
+      return;
+    }
+    document.body.style.overflow = 'hidden';
+  }, [isModalOpen]);
+
   const title = summary ? 'summary' : `cart(${cartCount})`;
   const button = createButton(summary);
-  const total = getTotalElements(summary);
+  const total = getTotalElements();
 
   function getTotalElements() {
     if (!summary) {
       return (
         <div className="cart-total">
           <p>TOTAL</p>
-          <p className="h6">${totalPrice}</p>
+          <p className="h6">{formatPrice(totalPrice)}</p>
         </div>
       );
     }
@@ -65,6 +61,19 @@ export default function Cart(props) {
     );
   }
 
+  function createButton(summary) {
+    if (summary) {
+      return <Button className="cart__checkout">CONTINUE & PAY</Button>;
+    }
+    return (
+      <Link to="checkout">
+        <Button className="cart__checkout" onClick={() => setModalOpen(false)}>
+          checkout
+        </Button>
+      </Link>
+    );
+  }
+
   return (
     <div className="cart">
       <div className="cart__head">
@@ -87,12 +96,7 @@ export default function Cart(props) {
         <>
           <div className="cart__inner">
             {cart.map((product) => (
-              <CartItem
-                key={product.id}
-                product={product}
-                summary={summary}
-                removeProduct={removeProduct}
-              />
+              <CartItem key={product.id} product={product} summary={summary} />
             ))}
           </div>
           <div className="cart__total-box">{total}</div>

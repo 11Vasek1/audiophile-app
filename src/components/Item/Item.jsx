@@ -9,9 +9,12 @@ import './Item.scss';
 export default function Item(props) {
   const { details } = props;
   const imageSrc = details.image[getDeviceForImage()];
+
+  const productLink = `/items/${details.category}/${details.slug}`;
+
   return (
     <li className="item">
-      <Link to={`/items/${details.category}/${details.id}`}>
+      <Link to={productLink}>
         <img
           className="item__img"
           src={`../${imageSrc}`}
@@ -24,7 +27,7 @@ export default function Item(props) {
         )}
         <div className="item__title">{details.name}</div>
         <div className="item__description">{details.description}</div>
-        <Link to={`/items/${details.category}/${details.id}`}>
+        <Link to={productLink}>
           <Button className="button">See Product</Button>
         </Link>
       </div>

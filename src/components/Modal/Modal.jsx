@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import './Modal.scss';
 
 function Modal({ isModalOpen, setModalOpen, children }) {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  });
+
   return (
     <div
       className={clsx('modal', { modal__active: isModalOpen })}
