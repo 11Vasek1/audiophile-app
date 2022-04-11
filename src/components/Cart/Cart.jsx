@@ -13,7 +13,7 @@ import { formatPrice } from '../../utils';
 import './Cart.scss';
 
 export default function Cart(props) {
-  const { summary, setModalOpen, isModalOpen } = props;
+  const { summary, isValid, setModalOpen, isModalOpen } = props;
   const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
   const cartCount = useSelector(cartCountSelector);
@@ -63,7 +63,11 @@ export default function Cart(props) {
 
   function createButton(summary) {
     if (summary) {
-      return <Button className="cart__checkout">CONTINUE & PAY</Button>;
+      return (
+        <Button className="cart__checkout" type="submit" disabled={!isValid}>
+          CONTINUE & PAY
+        </Button>
+      );
     }
     return (
       <Link to="checkout">

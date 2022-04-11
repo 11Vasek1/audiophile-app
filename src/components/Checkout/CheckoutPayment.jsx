@@ -1,6 +1,6 @@
 import React from 'react';
 import CheckoutCheckbox from './CheckoutCheckbox';
-import './CheckoutPayment.scss';
+import './Checkout.scss';
 
 function CheckoutPayment() {
   return (

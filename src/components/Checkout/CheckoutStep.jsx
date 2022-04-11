@@ -1,5 +1,5 @@
 import React from 'react';
-import './CheckoutStep.scss';
+import './Checkout.scss';
 
 function CheckoutStep({ title, content }) {
   return (

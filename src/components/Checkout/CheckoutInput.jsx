@@ -1,16 +1,31 @@
 import React from 'react';
 import Input from '../UI/Input';
 
-import './CheckoutInput.scss';
+import clsx from 'clsx';
+import './Checkout.scss';
 
-function CheckoutInput({ title, placeholder, doubled = false }) {
-  const className =
-    'checkout-input' + (doubled ? ' checkout-input--doubled' : '');
+function CheckoutInput(props) {
+  const {
+    label,
+    errors,
+    register,
+    required,
+    placeholder,
+    double = false,
+  } = props;
+  const className = clsx('checkout-input', {
+    'checkout-input--doubled': double,
+  });
 
   return (
     <div className={className}>
-      <p className="checkout-input-title checkout-input__input">{title}</p>
-      <Input placeholder={placeholder} />
+      <Input
+        placeholder={placeholder}
+        label={label}
+        errors={errors}
+        register={register}
+        required={required}
+      />
     </div>
   );
 }

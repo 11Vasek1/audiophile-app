@@ -1,5 +1,5 @@
 import React from 'react';
-import './CheckoutCheckbox.scss';
+import './Checkout.scss';
 
 function CheckoutCheckbox({ text }) {
   return (
