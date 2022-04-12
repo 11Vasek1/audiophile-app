@@ -13,7 +13,7 @@ export default function CartItem(props) {
   const dispatch = useDispatch();
   const cartItemRight = summary ? (
     <p>
-      <b>x1</b>
+      <b>x{count}</b>
     </p>
   ) : (
     <div className="cart-item__box">

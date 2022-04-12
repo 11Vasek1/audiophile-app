@@ -16,6 +16,7 @@ export default function Input(props) {
     input__text: type !== 'radio' || type !== 'number',
     payment__input: type === 'radio',
     number__input: type === 'number',
+    'input__text--error': errors?.[label],
   });
   return (
     <>

@@ -12,8 +12,6 @@ function SmallCard({ product }) {
     (store) => store.products?.products.slug[product.slug]
   );
 
-  console.log(_product);
-
   const link = `/items/${_product?.category}/${_product?.slug}`;
 
   return (
