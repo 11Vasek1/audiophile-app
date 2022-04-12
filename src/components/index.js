@@ -3,6 +3,7 @@ export { default as Product } from './Product/Product';
 export { default as Cart } from './Cart/Cart';
 export { default as Categories } from './Categories/Categories';
 export { default as About } from './About/About';
+export { default as ErrorFallback } from './Error/ErrorFallback';
 
 export { default as Layout } from './Layout';
 export { default as Spacer } from './Spacer';
