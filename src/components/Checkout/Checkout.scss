@@ -12,6 +12,7 @@
     display: grid;
     grid-template-columns: 2fr 1fr;
     column-gap: 30px;
+    row-gap: 30px;
     @include media-tablet {
       display: block;
     }
@@ -30,6 +31,10 @@
     border-radius: 8px;
     padding: 30px;
   }
+
+  &__type {
+    margin-bottom: 16px;
+  }
 }
 
 .checkout-steps {
@@ -41,6 +46,10 @@
 .checkout-input {
   &__title {
     margin-bottom: 9px;
+  }
+
+  &--type {
+    margin-bottom: 10px;
   }
 
   &--doubled {
@@ -74,6 +83,9 @@
   &__title {
     margin-bottom: 16px;
   }
+  &__type {
+    margin-bottom: 24px;
+  }
 }
 
 .checkout-step {
@@ -97,6 +109,20 @@
 
     @include media-mobile {
       grid-column: auto;
+    }
+  }
+}
+
+.delivery {
+  display: flex;
+  align-items: center;
+  &__img {
+    margin-right: 30px;
+  }
+  &__text {
+    @include media-mobile {
+      font-size: 13px;
+      line-height: 1.4;
     }
   }
 }

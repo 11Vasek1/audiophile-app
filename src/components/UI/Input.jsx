@@ -7,17 +7,22 @@ export default function Input(props) {
     type = 'text',
     placeholder,
     label,
+    name,
     register,
     required,
+    className,
     errors,
     ...rest
   } = props;
-  const classes = clsx({
-    input__text: type !== 'radio' || type !== 'number',
-    payment__input: type === 'radio',
-    number__input: type === 'number',
-    'input__text--error': errors?.[label],
-  });
+  const classes = clsx(
+    {
+      input__text: type !== 'radio' || type !== 'number',
+      payment__input: type === 'radio',
+      number__input: type === 'number',
+      'input__text--error': errors?.[label],
+    },
+    className
+  );
   return (
     <>
       <div className="input__box">
@@ -36,16 +41,33 @@ export default function Input(props) {
           </span>
         )}
       </div>
-      <input
-        className={classes}
-        type={type}
-        placeholder={placeholder}
-        {...register(label, {
-          required,
-          minLength: { value: 3, message: 'At least 3 characters' },
-        })}
-        {...rest}
-      />
+      {label === 'Email Address' && (
+        <input
+          className={classes}
+          type={type}
+          placeholder={placeholder}
+          {...register(label || name, {
+            required,
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: 'invalid email address',
+            },
+          })}
+          {...rest}
+        />
+      )}
+      {label !== 'Email Address' && (
+        <input
+          className={classes}
+          type={type}
+          placeholder={placeholder}
+          {...register(label || name, {
+            required,
+            minLength: { value: 3, message: 'At least 3 characters' },
+          })}
+          {...rest}
+        />
+      )}
     </>
   );
 }
