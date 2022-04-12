@@ -15,6 +15,7 @@ function CheckoutInput(props) {
   } = props;
   const className = clsx('checkout-input', {
     'checkout-input--doubled': double,
+    'checkout-input--type': label === 'e-Money Number',
   });
 
   return (

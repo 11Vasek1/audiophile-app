@@ -12,6 +12,7 @@ function CheckoutForm() {
     register,
     formState: { errors, isValid },
     handleSubmit,
+    watch,
     reset,
   } = useForm({
     mode: 'onBlur',
@@ -93,24 +94,13 @@ function CheckoutForm() {
       title: 'payment details',
       children: [
         <div className="checkout-step__long" key={8}>
-          <CheckoutPayment />
+          <CheckoutPayment
+            errors={errors}
+            register={register}
+            watch={watch}
+            required="Field is required"
+          />
         </div>,
-        <CheckoutInput
-          label="e-Money Number"
-          placeholder="238521993"
-          errors={errors}
-          register={register}
-          required="Field is required"
-          key={9}
-        />,
-        <CheckoutInput
-          label="e-Money PIN"
-          placeholder="6891"
-          errors={errors}
-          register={register}
-          required="Field is required"
-          key={10}
-        />,
       ],
     },
   ];
