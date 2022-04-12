@@ -31,6 +31,24 @@ function CheckoutPayment(props) {
         </div>
       </div>
       {paymentType === 'e-Money' && (
+        <div className="payment__money">
+          <CheckoutInput
+            label="e-Money Number"
+            placeholder="238521993"
+            errors={errors}
+            register={register}
+            required="Field is required"
+          />
+          <CheckoutInput
+            label="e-Money PIN"
+            placeholder="6891"
+            errors={errors}
+            register={register}
+            required="Field is required"
+          />
+        </div>
+      )}
+      {/*{paymentType === 'e-Money' && (
         <CheckoutInput
           label="e-Money Number"
           placeholder="238521993"
@@ -47,7 +65,7 @@ function CheckoutPayment(props) {
           register={register}
           required="Field is required"
         />
-      )}
+      )}*/}
       {paymentType === 'Cash on Delivery' && (
         <div className="delivery">
           <img

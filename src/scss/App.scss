@@ -196,6 +196,7 @@ body {
 
 .input__span {
   color: $default;
+  font-weight: 700;
   &--error {
     color: $error;
   }

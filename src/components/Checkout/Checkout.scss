@@ -65,7 +65,7 @@
   font-family: 'Manrope';
   font-style: normal;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 16px;
   letter-spacing: -0.2px;
   color: #000;
@@ -85,6 +85,15 @@
   }
   &__type {
     margin-bottom: 24px;
+  }
+  &__money {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 30px;
+
+    @include media-mobile {
+      grid-template-columns: 1fr;
+    }
   }
 }
 
