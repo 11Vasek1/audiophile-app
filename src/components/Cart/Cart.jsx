@@ -39,23 +39,27 @@ export default function Cart(props) {
         </div>
       );
     }
+    const shipping = 50;
+    const VAT = +(totalPrice * 0.2).toFixed(2);
+    const grandTotal = totalPrice + shipping + VAT;
+
     return (
       <>
         <div className="cart-total cart__total">
           <p>TOTAL</p>
-          <p className="h6">$ 5,396</p>
+          <p className="h6">{formatPrice(totalPrice)}</p>
         </div>
         <div className="cart-total cart__total">
           <p>SHIPPING</p>
-          <p className="h6">$ 50</p>
+          <p className="h6">{formatPrice(shipping)}</p>
         </div>
         <div className="cart-total cart__total">
           <p>VAT (INCLUDED)</p>
-          <p className="h6">$ 1,079</p>
+          <p className="h6">{formatPrice(VAT)}</p>
         </div>
         <div className="cart-total cart__big-total">
           <p>GRAND TOTAL</p>
-          <p className="h6 h6--orange">$ 5,446</p>
+          <p className="h6 h6--orange">{formatPrice(grandTotal)}</p>
         </div>
       </>
     );

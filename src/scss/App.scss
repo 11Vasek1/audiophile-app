@@ -175,8 +175,8 @@ body {
     outline-color: $accent;
   }
   &--error {
-    border: 2px solid #cd2c2c;
-    outline-color: #cd2c2c;
+    border: 2px solid $error !important;
+    outline-color: $error !important;
   }
 
   @media (max-width: 500px) {
@@ -191,13 +191,13 @@ body {
 }
 
 .input__error {
-  color: #cd2c2c;
+  color: $error;
 }
 
 .input__span {
   color: $default;
   &--error {
-    color: #cd2c2c;
+    color: $error;
   }
 }
 
