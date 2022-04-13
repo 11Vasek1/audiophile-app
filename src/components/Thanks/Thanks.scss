@@ -1,0 +1,46 @@
+@import '../../scss/vars';
+@import '../../scss/media';
+
+.thanks {
+  border-radius: 8px;
+  padding: 48px;
+
+  @include media-mobile {
+    padding: 32px;
+  }
+
+  background-color: $title;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: 540px;
+
+  @include media-mobile {
+    max-width: 327px;
+  }
+
+  &__title {
+    margin-top: 33px;
+    margin-bottom: 24px;
+
+    @include media-mobile {
+      margin-top: 23px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__text {
+    margin-bottom: 33px;
+
+    @include media-mobile {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.thanks-icon {
+  width: 64px;
+  height: 64px;
+}
