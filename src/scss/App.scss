@@ -120,6 +120,10 @@ body {
   background-color: $accent;
   color: #fff;
   border: 2px solid transparent;
+  &:active {
+    transform: translateY(1px);
+    filter: saturate(150%);
+  }
   &:hover {
     background-color: #fbaf85;
   }
@@ -171,6 +175,7 @@ body {
     font-size: 14px;
   }
   &:focus {
+    outline-style: solid;
     border-color: $accent;
     outline-color: $accent;
   }
@@ -269,6 +274,7 @@ body {
     height: 12px;
     top: 50%;
     transform: translateY(-50%);
+    background-color: #f1f1f100;
     &::after {
       content: '';
       position: absolute;
@@ -276,7 +282,7 @@ body {
       left: 1px;
       width: 9px;
       height: 1px;
-      background-color: #ccc;
+      background-color: #999;
     }
     &.minus {
       left: 15px;
@@ -291,7 +297,7 @@ body {
         left: 5px;
         width: 1px;
         height: 9px;
-        background-color: #ccc;
+        background-color: #999;
       }
     }
     &:hover::after,
@@ -311,9 +317,15 @@ body {
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 2px;
-  background-color: #191919;
+  background-color: #d87d4a;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #f6ffee;
+  background-color: #191919;
+}
+
+html,
+body {
+  scrollbar-color: #d87d4a #191919;
+  scrollbar-width: thin;
 }

@@ -5,6 +5,7 @@
   background-size: contain;
   padding: 130px 15px 158px 15px;
   background-color: #191919;
+  min-height: calc(100vh - 96px);
   @media (max-width: 1200px) {
     background-image: url('../../../assets/home/tablet/image-header.jpg');
     margin-top: -85px;

@@ -25,7 +25,7 @@ export default function Preview() {
                 Upgrade to premium speakers that are phenomenally built to
                 deliver truly remarkable sound.
               </p>
-              <Link to="/items/speakers/6">
+              <Link to="/items/speakers/zx9-speaker">
                 <Button className={styles.item__big_button}>See Product</Button>
               </Link>
             </div>
@@ -34,7 +34,7 @@ export default function Preview() {
           <div className={styles.item__medium}>
             <div className={styles.item__medium_about}>
               <h4 className={styles.item__medium_title}>ZX7 SPEAKER</h4>
-              <Link to="/items/speakers/5">
+              <Link to="/items/speakers/zx7-speaker">
                 <Button outline className={styles.item__medium_button}>
                   See Product
                 </Button>
@@ -50,7 +50,7 @@ export default function Preview() {
             />
             <div className={styles.item__small_about}>
               <h4 className={styles.item__small_title}>YX1 EARPHONES</h4>
-              <Link to="/items/speakers/1">
+              <Link to="/items/speakers/yx1-earphones">
                 <Button outline className={styles.item__small_button}>
                   See Product
                 </Button>
