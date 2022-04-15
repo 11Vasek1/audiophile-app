@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { addProducts } from './store/productsSlice';
+import { addProducts } from './redux/productsSlice';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 import {
   Items,
-  Cart,
   Product,
   Layout,
   ScrollToTop,
   ErrorFallback,
 } from './components';
 import Checkout from './components/Checkout/Checkout';
-import Modal from './components/Modal/Modal';
 import useFetch from './Hooks/useFetch';
 import { Home, NotFoundPage } from './pages';
 
@@ -21,7 +19,6 @@ import './scss/App.scss';
 const URL = 'http://localhost:3002/';
 
 function App() {
-  const [isModalOpen, setModalOpen] = useState(false);
   const { get } = useFetch(URL);
   const dispatch = useDispatch();
 
@@ -42,15 +39,7 @@ function App() {
         >
           <ScrollToTop>
             <Routes>
-              <Route
-                path="/"
-                element={
-                  <Layout
-                    isModalOpen={isModalOpen}
-                    setModalOpen={setModalOpen}
-                  />
-                }
-              >
+              <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
                 <Route path="items/:category" element={<Items />} />
                 <Route path="items/:category/:slug" element={<Product />} />
@@ -59,11 +48,6 @@ function App() {
               </Route>
             </Routes>
           </ScrollToTop>
-          {isModalOpen && (
-            <Modal isModalOpen={isModalOpen} setModalOpen={setModalOpen}>
-              <Cart isModalOpen={isModalOpen} setModalOpen={setModalOpen} />
-            </Modal>
-          )}
         </ErrorBoundary>
       </BrowserRouter>
     </>

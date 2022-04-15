@@ -5,7 +5,7 @@ import {
   addOneProduct,
   removeOneProduct,
   removeProduct,
-} from '../../store/cartSlice';
+} from '../../redux/cartSlice';
 
 export default function InputNumber(props) {
   const { count, increment, decrement, product } = props;

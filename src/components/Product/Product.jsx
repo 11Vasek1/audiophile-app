@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addProduct } from '../../store/cartSlice';
+import { addProduct } from '../../redux/cartSlice';
 import useProductCounter from '../../Hooks/useProductCounter';
 import { ProductFeatures, ProductPhotos, ProductLike } from '.';
 import ProductInfo from '../ProductInfo/ProductInfo';

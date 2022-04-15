@@ -5,7 +5,8 @@ import {
   cartCountSelector,
   cartValueSelector,
   removeAllProduct,
-} from '../../store/cartSlice';
+} from '../../redux/cartSlice';
+import { closeModal } from '../../redux/modalSlice';
 import Button from '../UI/Button';
 import CartItem from './CartItem';
 import { formatPrice } from '../../utils';
@@ -13,18 +14,11 @@ import { formatPrice } from '../../utils';
 import './Cart.scss';
 
 export default function Cart(props) {
-  const { summary, isValid, setModalOpen, isModalOpen } = props;
+  const { summary, isValid } = props;
   const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
   const cartCount = useSelector(cartCountSelector);
   const totalPrice = useSelector(cartValueSelector);
-
-  useEffect(() => {
-    if (!isModalOpen) {
-      return;
-    }
-    document.body.style.overflow = 'hidden';
-  }, [isModalOpen]);
 
   const title = summary ? 'summary' : `cart(${cartCount})`;
   const button = createButton(summary);
@@ -75,7 +69,10 @@ export default function Cart(props) {
     }
     return (
       <Link to="checkout">
-        <Button className="cart__checkout" onClick={() => setModalOpen(false)}>
+        <Button
+          className="cart__checkout"
+          onClick={() => dispatch(closeModal())}
+        >
           checkout
         </Button>
       </Link>

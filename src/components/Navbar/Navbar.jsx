@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import clsx from 'clsx';
-import { cartCountSelector } from '../../store/cartSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { cartCountSelector } from '../../redux/cartSlice';
+import { openModal } from '../../redux/modalSlice';
 
+import clsx from 'clsx';
 import styles from './Navbar.module.scss';
 import LogoSvg from '../../../assets/shared/desktop/logo.svg';
 import CartSvg from '../../../assets/shared/desktop/icon-cart.svg';
 
-export default function Navbar({ setModalOpen }) {
+export default function Navbar() {
   const [isMenuActive, setMenuActive] = useState(false);
   const cartCount = useSelector(cartCountSelector);
+  const dispatch = useDispatch();
 
   const classes = ({ isActive }) =>
     clsx({
@@ -74,7 +76,7 @@ export default function Navbar({ setModalOpen }) {
               </NavLink>
             </li>
           </ul>
-          <button className={styles.cart} onClick={() => setModalOpen(true)}>
+          <button className={styles.cart} onClick={() => dispatch(openModal())}>
             <img src={CartSvg} alt="cart icon" />
             <span className={styles.cart__count}>({cartCount})</span>
           </button>

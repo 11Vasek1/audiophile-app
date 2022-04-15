@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { removeProduct } from '../../store/cartSlice';
+import { removeProduct } from '../../redux/cartSlice';
 import InputNumber from '../UI/InputNumber';
 import { fixProductName, formatPrice } from '../../utils';
 import useProductCounter from '../../Hooks/useProductCounter';

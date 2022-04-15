@@ -1,14 +1,23 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar/Navbar';
 import Footer from './Footer/Footer';
+import Modal from './Modal/Modal';
+import Cart from './Cart/Cart';
+import { useModalOpen } from '../redux/modalSlice';
 
 import './../scss/App.scss';
-export default function Layout({ isModalOpen, setModalOpen }) {
+export default function Layout() {
+  const isModalOpen = useModalOpen();
   return (
     <>
       <div className="wrapper">
         <div className="header">
-          <Navbar setModalOpen={setModalOpen} isModalOpen={isModalOpen} />
+          <Navbar />
+          {isModalOpen && (
+            <Modal>
+              <Cart />
+            </Modal>
+          )}
         </div>
         <div className="main">
           <Outlet />
