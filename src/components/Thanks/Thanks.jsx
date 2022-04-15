@@ -1,11 +1,18 @@
 import React from 'react';
-import './Thanks.scss';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { removeAllProduct } from '../../redux/cartSlice';
 import ThanksCart from './ThanksCart';
-
 import { Button, Spacer } from '..';
 
+import './Thanks.scss';
+
 function Thanks() {
+  const dispatch = useDispatch();
+  function handleBackHomeClick() {
+    dispatch(removeAllProduct());
+  }
+
   return (
     <div className="thanks">
       <img
@@ -26,7 +33,7 @@ function Thanks() {
         <ThanksCart />
       </Spacer>
       <Link to={'/'}>
-        <Button className="cart__checkout" type="submit">
+        <Button className="cart__checkout" onClick={handleBackHomeClick}>
           BACK TO HOME
         </Button>
       </Link>

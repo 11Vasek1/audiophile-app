@@ -15,7 +15,6 @@ import useFetch from './Hooks/useFetch';
 import { Home, NotFoundPage } from './pages';
 
 import './scss/App.scss';
-import Thanks from './components/Thanks/Thanks';
 
 const URL = 'http://localhost:3002/';
 
@@ -45,7 +44,6 @@ function App() {
                 <Route path="items/:category" element={<Items />} />
                 <Route path="items/:category/:slug" element={<Product />} />
                 <Route path="checkout" element={<Checkout />} />
-                <Route path="thanks" element={<Thanks />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Route>
             </Routes>

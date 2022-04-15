@@ -1,11 +1,16 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { openThanksModal, useThanksModalOpen } from '../../redux/modalSlice';
 import CheckoutInput from './CheckoutInput';
 import CheckoutPayment from './CheckoutPayment';
 import CheckoutStep from './CheckoutStep';
 import Cart from './../Cart/Cart';
+import Modal from '../Modal/Modal';
+import Thanks from '../Thanks/Thanks';
 
 import './Checkout.scss';
+import '../Modal/Modal.scss';
 
 function CheckoutForm() {
   const {
@@ -17,6 +22,8 @@ function CheckoutForm() {
   } = useForm({
     mode: 'onBlur',
   });
+  const dispatch = useDispatch();
+  const isModalOpen = useThanksModalOpen();
 
   const content = [
     {
@@ -105,29 +112,36 @@ function CheckoutForm() {
     },
   ];
 
-  function onSubmitForm(data) {
-    alert(JSON.stringify(data));
+  function onSubmitForm() {
+    dispatch(openThanksModal());
     reset();
   }
 
   return (
-    <form className="checkout__form" onSubmit={handleSubmit(onSubmitForm)}>
-      <div className="checkout__box">
-        <h3 className="h3 checkout__h3">CHECKOUT</h3>
-        <div className="checkout-steps">
-          {content.map((step, index) => (
-            <CheckoutStep
-              key={index}
-              title={step.title}
-              content={step.children}
-            />
-          ))}
+    <>
+      <form className="checkout__form" onSubmit={handleSubmit(onSubmitForm)}>
+        <div className="checkout__box">
+          <h3 className="h3 checkout__h3">CHECKOUT</h3>
+          <div className="checkout-steps">
+            {content.map((step, index) => (
+              <CheckoutStep
+                key={index}
+                title={step.title}
+                content={step.children}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-      <div className="checkout__content">
-        <Cart summary isValid={isValid} />
-      </div>
-    </form>
+        <div className="checkout__content">
+          <Cart summary isValid={isValid} />
+        </div>
+      </form>
+      {isModalOpen && (
+        <Modal className="modal__container--thanks">
+          <Thanks />
+        </Modal>
+      )}
+    </>
   );
 }
 

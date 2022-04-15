@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { cartCountSelector } from '../../redux/cartSlice';
-import { openModal } from '../../redux/modalSlice';
+import { openCartModal } from '../../redux/modalSlice';
 
 import clsx from 'clsx';
 import styles from './Navbar.module.scss';
@@ -76,7 +76,10 @@ export default function Navbar() {
               </NavLink>
             </li>
           </ul>
-          <button className={styles.cart} onClick={() => dispatch(openModal())}>
+          <button
+            className={styles.cart}
+            onClick={() => dispatch(openCartModal())}
+          >
             <img src={CartSvg} alt="cart icon" />
             <span className={styles.cart__count}>({cartCount})</span>
           </button>

@@ -6,7 +6,7 @@ import {
   cartValueSelector,
   removeAllProduct,
 } from '../../redux/cartSlice';
-import { closeModal } from '../../redux/modalSlice';
+import { closeCartModal } from '../../redux/modalSlice';
 import Button from '../UI/Button';
 import CartItem from './CartItem';
 import { formatPrice } from '../../utils';
@@ -71,7 +71,7 @@ export default function Cart(props) {
       <Link to="checkout">
         <Button
           className="cart__checkout"
-          onClick={() => dispatch(closeModal())}
+          onClick={() => dispatch(closeCartModal())}
         >
           checkout
         </Button>

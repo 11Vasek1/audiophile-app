@@ -2,25 +2,40 @@ import { createSlice } from '@reduxjs/toolkit';
 import { useSelector } from 'react-redux';
 
 const initialState = {
-  isModalOpen: false,
+  isCartModalOpen: false,
+  isThanksModalOpen: false,
 };
 
 const modalSlice = createSlice({
   name: 'modal',
   initialState,
   reducers: {
-    openModal: (state) => {
-      state.isModalOpen = true;
+    openCartModal: (state) => {
+      state.isCartModalOpen = true;
     },
-    closeModal: (state) => {
-      state.isModalOpen = false;
+    closeCartModal: (state) => {
+      state.isCartModalOpen = false;
+    },
+    openThanksModal: (state) => {
+      state.isThanksModalOpen = true;
+    },
+    closeThanksModal: (state) => {
+      state.isThanksModalOpen = false;
     },
   },
 });
 
-export const { openModal, closeModal } = modalSlice.actions;
+export const {
+  openCartModal,
+  closeCartModal,
+  openThanksModal,
+  closeThanksModal,
+} = modalSlice.actions;
 
-export const useModalOpen = () =>
-  useSelector((state) => state.modal.isModalOpen);
+export const useCartModalOpen = () =>
+  useSelector((state) => state.modal.isCartModalOpen);
+
+export const useThanksModalOpen = () =>
+  useSelector((state) => state.modal.isThanksModalOpen);
 
 export default modalSlice.reducer;

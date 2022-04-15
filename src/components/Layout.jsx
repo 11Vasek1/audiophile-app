@@ -3,11 +3,11 @@ import Navbar from './Navbar/Navbar';
 import Footer from './Footer/Footer';
 import Modal from './Modal/Modal';
 import Cart from './Cart/Cart';
-import { useModalOpen } from '../redux/modalSlice';
+import { useCartModalOpen } from '../redux/modalSlice';
 
 import './../scss/App.scss';
 export default function Layout() {
-  const isModalOpen = useModalOpen();
+  const isModalOpen = useCartModalOpen();
   return (
     <>
       <div className="wrapper">

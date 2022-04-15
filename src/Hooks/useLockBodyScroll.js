@@ -15,5 +15,5 @@ export default function useLockBodyScroll() {
       document.body.style.overflow = originalStyle;
       document.body.style.paddingRight = originalPaddingRight;
     };
-  }, []);
+  }, [window.getComputedStyle]);
 }

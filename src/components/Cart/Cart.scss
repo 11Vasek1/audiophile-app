@@ -4,6 +4,9 @@
   padding: 32px;
   background-color: $title;
   border-radius: 8px;
+  @media (max-width: 375px) {
+    padding: 20px;
+  }
 
   &__no-item {
     margin-top: 20px;
@@ -30,6 +33,7 @@
     margin: 32px 0px;
     display: grid;
     row-gap: 24px;
+    max-width: 377px;
   }
 
   &__total-box {
