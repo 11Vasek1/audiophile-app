@@ -13,7 +13,10 @@ export default function CartItem(props) {
   const dispatch = useDispatch();
   const cartItemRight = summary ? (
     <p>
-      <b>x{count}</b>
+      <b>
+        x
+        {count}
+      </b>
     </p>
   ) : (
     <div className="cart-item__box">
@@ -25,12 +28,10 @@ export default function CartItem(props) {
       />
       <button
         className="cart-item__delete"
+        type="button"
         onClick={() => dispatch(removeProduct(product))}
       >
-        <img
-          src={'../../../assets/shared/desktop/close-icon.svg'}
-          alt="delete"
-        />
+        <img src="../../../assets/shared/desktop/close-icon.svg" alt="delete" />
       </button>
     </div>
   );

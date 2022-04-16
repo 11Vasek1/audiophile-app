@@ -11,7 +11,9 @@ const PAYMENT_TYPE = {
 };
 
 function CheckoutPayment(props) {
-  const { content, register, required, errors, control } = props;
+  const {
+    content, register, required, errors, control,
+  } = props;
   const paymentType = useWatch({
     control,
     name: 'payment',
@@ -21,19 +23,18 @@ function CheckoutPayment(props) {
       <div className="payment">
         <p className="payment__title checkout-input-title">Payment Method:</p>
         <div className="payment__box">
-          {content.map((data) => {
-            return (
-              <CheckoutCheckbox
-                key={data.id}
-                type={data.type}
-                value={data.value}
-                name={data.name}
-                register={register}
-                required={required}
-                errors={errors}
-              />
-            );
-          })}
+          {content.map((data) => (
+            <CheckoutCheckbox
+              key={data.id}
+              type={data.type}
+              value={data.value}
+              name={data.name}
+              register={register}
+              required={required}
+              errors={errors}
+              control={control}
+            />
+          ))}
         </div>
       </div>
 
@@ -65,7 +66,7 @@ function CheckoutPayment(props) {
         <div className="delivery">
           <img
             className="delivery__img"
-            src={'../../../assets/shared/desktop/delivery.svg'}
+            src="../../../assets/shared/desktop/delivery.svg"
             alt="delivery"
           />
           <p className="delivery__text">

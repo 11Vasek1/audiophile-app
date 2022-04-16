@@ -1,25 +1,28 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getDevice } from '../../utils';
 import Button from '../UI/Button';
-import './SmallCard.scss';
 
-function SmallCard({ product }) {
-  const image = product.image[getDevice()];
+import './Product.scss';
 
-  const _product = useSelector(
-    (store) => store.products?.products.slug[product.slug]
-  );
+function SmallCard({ other }) {
+  const image = other.image[getDevice()];
 
-  const link = `/items/${_product?.category}/${_product?.slug}`;
+  const category = () => {
+    const arr = other.slug.split('-');
+    return arr[arr.length - 1];
+  };
 
   return (
     <div className="small-card">
-      <img className="small-card__image" src={'../../' + image} />
-      <h4 className="h4 small-card__title">{product.name}</h4>
-      <Link to={link}>
-        <Button children={'See Product'} />
+      <img
+        className="small-card__image"
+        src={`../../${image}`}
+        alt={other.name}
+      />
+      <h4 className="h4 small-card__title">{other.name}</h4>
+      <Link to={`/items/${category()}/${other.slug}`}>
+        <Button>See Product</Button>
       </Link>
     </div>
   );

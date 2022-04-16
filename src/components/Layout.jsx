@@ -6,6 +6,7 @@ import Cart from './Cart/Cart';
 import { useCartModalOpen } from '../redux/modalSlice';
 
 import './../scss/App.scss';
+
 export default function Layout() {
   const isModalOpen = useCartModalOpen();
   return (

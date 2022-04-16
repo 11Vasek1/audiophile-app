@@ -2,6 +2,8 @@ import React from 'react';
 import clsx from 'clsx';
 import '../../scss/App.scss';
 
+const EMAIL_LABEL = 'Email Address';
+
 export default function Input(props) {
   const {
     type = 'text',
@@ -12,6 +14,7 @@ export default function Input(props) {
     required,
     className,
     errors,
+    control,
     ...rest
   } = props;
   const classes = clsx(
@@ -41,7 +44,7 @@ export default function Input(props) {
           </span>
         )}
       </div>
-      {label === 'Email Address' ? (
+      {label === EMAIL_LABEL ? (
         <input
           className={classes}
           type={type}

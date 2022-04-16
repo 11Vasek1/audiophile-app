@@ -10,6 +10,7 @@ function RemoveButton() {
   return (
     <button
       className="cart__remove"
+      type="button"
       onClick={() => dispatch(removeAllProduct(cart))}
     >
       Remove all

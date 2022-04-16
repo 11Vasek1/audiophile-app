@@ -1,18 +1,17 @@
 import React from 'react';
-import './ProductLike.scss';
 import SmallCard from './SmallCard';
 
-function ProductLike({ others }) {
-  const className = 'product-like ';
+import './Product.scss';
 
-  const cards = others.map((product, index) => (
-    <SmallCard key={index} product={product} />
-  ));
+function ProductLike({ product }) {
+  const { others } = product;
 
   return (
-    <div className={className}>
+    <div className="product-like">
       <h3 className="h3 product-like__title">you may also like</h3>
-      <div className="product-like__cards">{cards}</div>
+      <div className="product-like__cards">
+        {others.map((other, index) => <SmallCard key={index} other={other} />)}
+      </div>
     </div>
   );
 }

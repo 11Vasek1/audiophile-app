@@ -62,7 +62,7 @@ export const FORM_DATA = [
   },
 ];
 
-export const FORM_DATA_RADIO = [
+export const FORM_RADIO_DATA = [
   {
     id: 1,
     title: 'Payment Details',

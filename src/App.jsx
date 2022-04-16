@@ -1,34 +1,25 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { addProducts } from './redux/productsSlice';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
+import { loadProducts } from './redux/productsSlice';
 import {
   Items,
   Product,
+  Checkout,
   Layout,
   ScrollToTop,
   ErrorFallback,
 } from './components';
-import Checkout from './components/Checkout/Checkout';
-import useFetch from './Hooks/useFetch';
 import { Home, NotFoundPage } from './pages';
 
 import './scss/App.scss';
 
-const URL = 'http://localhost:3002/';
-
 function App() {
-  const { get } = useFetch(URL);
   const dispatch = useDispatch();
-
   useEffect(() => {
-    get('items')
-      .then((data) => {
-        dispatch(addProducts(data));
-      })
-      .catch((error) => console.log('Could not load products', error));
-  }, []);
+    dispatch(loadProducts());
+  }, [dispatch]);
 
   return (
     <>

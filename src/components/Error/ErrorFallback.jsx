@@ -2,9 +2,9 @@ import React from 'react';
 import Button from '../UI/Button';
 
 import './Error.scss';
-import './../../scss/App.scss';
+import '../../scss/App.scss';
 
-function ErrorFallback({ error, resetErrorBoundary }) {
+function ErrorFallback({ resetErrorBoundary }) {
   return (
     <div role="alert" className="error">
       <div className="container">

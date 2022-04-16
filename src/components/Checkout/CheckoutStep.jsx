@@ -1,11 +1,11 @@
 import React from 'react';
+import clsx from 'clsx';
 import Input from '../UI/Input';
 
-import clsx from 'clsx';
 import './Checkout.scss';
 
 function CheckoutStep(props) {
-  const { title, content, errors, register, required, watch } = props;
+  const { title, content, errors, register, required } = props;
 
   return (
     <div className="checkout-step">
