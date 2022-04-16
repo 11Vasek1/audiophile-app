@@ -90,6 +90,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 30px;
+    margin-top: -40px;
 
     @include media-mobile {
       grid-template-columns: 1fr;
@@ -125,6 +126,8 @@
 .delivery {
   display: flex;
   align-items: center;
+  margin-top: -40px;
+
   &__img {
     margin-right: 30px;
   }

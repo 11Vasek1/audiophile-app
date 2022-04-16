@@ -1,10 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { cartValueSelector } from '../../redux/cartSlice';
-import { SHIPPING } from '../../constants/constants';
 import { formatPrice } from '../../utils';
 
 import './Cart.scss';
+
+const SHIPPING = 50;
 
 export default function TotalElements({ summary }) {
   const totalPrice = useSelector(cartValueSelector);

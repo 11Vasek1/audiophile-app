@@ -41,7 +41,7 @@ export default function Input(props) {
           </span>
         )}
       </div>
-      {label === 'Email Address' && (
+      {label === 'Email Address' ? (
         <input
           className={classes}
           type={type}
@@ -55,8 +55,7 @@ export default function Input(props) {
           })}
           {...rest}
         />
-      )}
-      {label !== 'Email Address' && (
+      ) : (
         <input
           className={classes}
           type={type}

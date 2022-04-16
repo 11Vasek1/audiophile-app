@@ -1,12 +1,10 @@
 import React from 'react';
 import Input from '../UI/Input';
-import CheckoutInput from './CheckoutInput';
+
 import './Checkout.scss';
 
 function CheckoutCheckbox(props) {
-  const { value, required, errors, register, name } = props;
-  //const paymentType = watch('payment');
-  //console.log(paymentType === 'e-Money');
+  const { type, name, value, required, errors, register } = props;
 
   return (
     <>
@@ -14,7 +12,7 @@ function CheckoutCheckbox(props) {
         <span className="payment__text">{value}</span>
         <Input
           className="payment__input"
-          type="radio"
+          type={type}
           name={name}
           value={value}
           errors={errors}
@@ -25,28 +23,6 @@ function CheckoutCheckbox(props) {
           <span></span>
         </span>
       </label>
-      {/*{
-        (paymentType === 'e-Money' && (
-          <CheckoutInput
-            label="e-Money Number"
-            placeholder="238521993"
-            errors={errors}
-            register={register}
-            required="Field is required"
-            //key={9}
-          />
-        ),
-        (
-          <CheckoutInput
-            label="e-Money PIN"
-            placeholder="6891"
-            errors={errors}
-            register={register}
-            required="Field is required"
-            //key={10}
-          />
-        ))
-      }*/}
     </>
   );
 }

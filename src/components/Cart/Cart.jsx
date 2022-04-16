@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { cartCountSelector } from '../../redux/cartSlice';
 import RemoveButton from './RemoveButton';
-import CreateButton from '../CreateButton/CreateButton';
+import CreateButton from './CreateButton';
 import CartItem from './CartItem';
 import TotalElements from './TotalElements';
 
@@ -31,7 +31,7 @@ export default function Cart(props) {
         <div className="cart">
           <div className="cart__head">
             <p className="h6">{title}</p>
-            <RemoveButton />
+            {!summary && <RemoveButton />}
           </div>
           <div className="cart__inner">
             {cart.map((product) => (

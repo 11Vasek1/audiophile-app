@@ -1,72 +1,67 @@
 import React from 'react';
+import { useWatch } from 'react-hook-form';
 import CheckoutCheckbox from './CheckoutCheckbox';
-import CheckoutInput from './CheckoutInput';
+import Input from '../UI/Input';
 
 import './Checkout.scss';
 
+const PAYMENT_TYPE = {
+  CASH: 'Cash on Delivery',
+  E_MONEY: 'e-Money',
+};
+
 function CheckoutPayment(props) {
-  const { register, required, errors, watch } = props;
-  const paymentType = watch('payment');
+  const { content, register, required, errors, control } = props;
+  const paymentType = useWatch({
+    control,
+    name: 'payment',
+  });
   return (
     <>
       <div className="payment">
         <p className="payment__title checkout-input-title">Payment Method:</p>
         <div className="payment__box">
-          <CheckoutCheckbox
-            value="e-Money"
-            register={register}
-            required={required}
-            errors={errors}
-            watch={watch}
-            name="payment"
-          />
-          <CheckoutCheckbox
-            value="Cash on Delivery"
-            register={register}
-            required={required}
-            errors={errors}
-            watch={watch}
-            name="payment"
-          />
+          {content.map((data) => {
+            return (
+              <CheckoutCheckbox
+                key={data.id}
+                type={data.type}
+                value={data.value}
+                name={data.name}
+                register={register}
+                required={required}
+                errors={errors}
+              />
+            );
+          })}
         </div>
       </div>
-      {paymentType === 'e-Money' && (
+
+      {paymentType === PAYMENT_TYPE.E_MONEY && (
         <div className="payment__money">
-          <CheckoutInput
-            label="e-Money Number"
-            placeholder="238521993"
-            errors={errors}
-            register={register}
-            required="Field is required"
-          />
-          <CheckoutInput
-            label="e-Money PIN"
-            placeholder="6891"
-            errors={errors}
-            register={register}
-            required="Field is required"
-          />
+          <div className="payment__money-number">
+            <Input
+              className="payment__type"
+              label="e-Money Number"
+              placeholder="238521993"
+              errors={errors}
+              register={register}
+              required="Field is required"
+            />
+          </div>
+          <div className="payment__money-pin">
+            <Input
+              label="e-Money PIN"
+              placeholder="6891"
+              errors={errors}
+              register={register}
+              required="Field is required"
+            />
+          </div>
         </div>
       )}
-      {/*{paymentType === 'e-Money' && (
-        <CheckoutInput
-          label="e-Money Number"
-          placeholder="238521993"
-          errors={errors}
-          register={register}
-          required="Field is required"
-        />
-      )}
-      {paymentType === 'e-Money' && (
-        <CheckoutInput
-          label="e-Money PIN"
-          placeholder="6891"
-          errors={errors}
-          register={register}
-          required="Field is required"
-        />
-      )}*/}
-      {paymentType === 'Cash on Delivery' && (
+
+      {paymentType === PAYMENT_TYPE.CASH && (
         <div className="delivery">
           <img
             className="delivery__img"
