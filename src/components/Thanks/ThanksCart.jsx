@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { formatPrice } from '../../utils';
-import './ThanksCart.scss';
+import { cartValueSelector } from '../../redux/cartSlice';
 import ThanksItem from './ThanksItem';
+import './ThanksCart.scss';
 
 function ThanksCart() {
   const [isOpen, setIsOpen] = useState(false);
   const cart = useSelector((state) => state.cart.cart);
+  const totalPrice = useSelector(cartValueSelector);
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -31,7 +33,7 @@ function ThanksCart() {
       </div>
       <div className="thanks-total">
         <p className="thanks-total__title">GRAND TOTAL</p>
-        <p className="h6 h6--white">{formatPrice(5446)}</p>
+        <p className="h6 h6--white">{formatPrice(totalPrice)}</p>
       </div>
     </div>
   );
